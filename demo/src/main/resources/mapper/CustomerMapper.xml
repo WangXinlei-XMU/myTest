@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间：通过namespace属性指定该映射文件是实现哪一个接口的，值是接口的完全限定名(包名.类名) -->
+<mapper namespace="com.example.demo.dao.CustomerDao">
+    <!--
+    select 查询动作
+    id属性：指定接口中要实现的方法名
+	resultType属性：返回值类型，如果是集合指的是集合中泛型的完全限定名
+	 -->
+    <select id="selectCustomer" resultMap="CustomerMap">
+        select *
+        from customer
+        <where>
+            <if test="name!=null and name!=''">
+                name=#{name}
+            </if>
+            <if test="password!=null and password!=''">
+                and password=#{password}
+            </if>
+            <if test="state!=null and state!=''">
+                and state=#{state}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="CustomerMap" type="com.example.demo.model.Customer">
+        <id property="id" column="id" jdbcType="INTEGER"></id>
+        <result column = "name" property = "name" jdbcType = "VARCHAR"></result>
+        <result column = "password" property = "password" jdbcType = "VARCHAR"></result>
+        <result column = "introduce" property = "introduce" jdbcType = "VARCHAR"></result>
+        <result column = "email" property = "email" jdbcType = "VARCHAR"></result>
+        <result column = "phone" property = "phone" jdbcType = "VARCHAR"></result>
+        <result column = "back_url" property = "backUrl" jdbcType = "VARCHAR"></result>
+        <result column = "avatar_url" property = "avatarUrl" jdbcType = "VARCHAR"></result>
+        <result column = "type" property = "type" jdbcType = "TINYINT"></result>
+        <result column = "state" property = "state" jdbcType = "TINYINT"></result>
+    </resultMap>
+
+</mapper>
