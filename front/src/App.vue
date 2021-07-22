@@ -5,11 +5,16 @@
       <label for="password">用户名</label><input type="password" v-model.trim="loginData.password" name="password">
       <input type="button" value="登录" @click="doLogin">
     </form>
-    <div>
-      <from>
 
-      </from>
+    <div id="nav">
+      <el-row>
+        <el-col :span="8"><div class="grid-content bg-purple"><router-link to="/">Home</router-link></div></el-col>
+        <el-col :span="8"><div class="grid-content bg-purple-light"><router-link to="/about">About</router-link></div></el-col>
+        <el-col :span="8"><div class="grid-content bg-purple"><router-link to="/me">Me</router-link></div></el-col>
+      </el-row>
     </div>
+
+    <router-view/>
   </div>
 </template>
 
@@ -43,7 +48,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
