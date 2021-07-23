@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="传文件信息到前端">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/Search.java" afterDir="false" />
+    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="文章搜索">
+      <change afterPath="$PROJECT_DIR$/front/src/views/Info.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/MyResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/MyResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/ArticleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/ArticleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Article.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/MyResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/MyResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/ArticleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/DemoApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Main.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -210,6 +210,13 @@
       <workItem from="1627039570651" duration="1793000" />
       <workItem from="1627041385836" duration="1791000" />
       <workItem from="1627043194492" duration="1446000" />
+      <workItem from="1627044656114" duration="1162000" />
+      <workItem from="1627045844054" duration="1791000" />
+      <workItem from="1627047657501" duration="1303000" />
+      <workItem from="1627052728248" duration="1795000" />
+      <workItem from="1627054550937" duration="1793000" />
+      <workItem from="1627056365028" duration="866000" />
+      <workItem from="1627059372830" duration="33000" />
     </task>
     <task id="LOCAL-00001" summary="commint">
       <created>1626940860347</created>
@@ -246,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627023482705</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="文章搜索">
+      <created>1627044920505</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1627044920505</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,6 +297,7 @@
     <MESSAGE value="vue导航，首页初步设计" />
     <MESSAGE value="注册登录的更新" />
     <MESSAGE value="传文件信息到前端" />
-    <option name="LAST_COMMIT_MESSAGE" value="传文件信息到前端" />
+    <MESSAGE value="文章搜索" />
+    <option name="LAST_COMMIT_MESSAGE" value="文章搜索" />
   </component>
 </project>

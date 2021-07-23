@@ -9,6 +9,7 @@ import java.util.List;
 public class ArticleSimple {
     Integer id;
     String user;
+    Integer userId;
     String title;
     List<String> labels;
     LocalDateTime createTime;

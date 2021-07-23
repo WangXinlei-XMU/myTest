@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Article;
 import com.example.demo.model.Vo.Search;
 import com.example.demo.dao.ArticleDao;
 import com.example.demo.dao.CustomerDao;
@@ -35,18 +36,25 @@ public class ArticleService {
         return articleDao.getLabel(articleId);
     }
 
+
     //通过限制条件查询
     public PageInfo<ArticleSimple> getArticleByKey(Search search) {
-        PageInfo<ArticleSimple> pageInfo=page( articleDao.getArticleByKey
-                (search.getSearch()),search.getCurrent(),search.getSize());
+        // 1 设置分页页码和显示条数
+//        System.out.println(pageSize);
+        PageHelper.startPage(search.getCurrent(),search.getSize(),true);
+
+        List<ArticleSimple> list=articleDao.getArticleByKey(search.getSearch());
+        // 2 集合封装到PageInfo类中
+        PageInfo<ArticleSimple> pageInfo = new PageInfo<>(list);
         return pageInfo;
     }
-    //分页
-    public PageInfo<ArticleSimple> page(List<ArticleSimple> list,Integer pageNum,Integer pageSize){
-        // 1 设置分页页码和显示条数
-        PageHelper.startPage(pageNum, pageSize,true);
-        // 2 集合封装到PageInfo类中
-        PageInfo<ArticleSimple> pages = new PageInfo<>(list);
-        return pages;
+
+    //获取一篇文章
+    public Article getArticleById(Integer id){
+        System.out.println("id:"+id);
+        Article article=articleDao.getArticleById(id);
+        List<String> list=articleDao.getLabel(id);
+        article.setLabels(list);
+        return article;
     }
 }

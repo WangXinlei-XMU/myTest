@@ -23,14 +23,14 @@
             <li v-if="lists.length===0">
               <el-empty description="没有搜到有效信息"></el-empty>
             </li>
-            <li v-for="(article,index) in lists" v-bind:key="index" @click="goto(index)" >
+            <ul v-for="(article,index) in lists" v-bind:key="index" >
               <span>
-                <span class="article-title">文章标题：{{ article.title }}</span>
-                <span class="article-user">作者：{{ article.user }}</span>
-                <span class="article-title">标签：{{ article.labels }}</span>
-                <span class="article-time">时间：{{ article.createTime }}</span>
+                <li class="article-title" @click="gotoArticle(index)">文章标题：{{ article.title }}</li>
+                <li class="article-user" @click="gotoUser(index)">作者：{{ article.user }}</li>
+                <li class="article-title">标签：{{ article.labels }}</li>
+                <li class="article-time">时间：{{ article.createTime }}</li>
               </span>
-            </li>
+            </ul>
           </div>
 
           <div class="block">
@@ -44,7 +44,6 @@
               :total="msg.total">
             </el-pagination>
           </div>
-
         </el-tab-pane>
         <el-tab-pane label="配置管理">
 
@@ -84,6 +83,8 @@ export default {
         current:1,
         total:0
       },
+      articleId:-1,
+      userId:-1,
       lists:[]
     }
   },
@@ -94,7 +95,7 @@ export default {
     searchBtn(){
       let success=(response)=>{
         this.lists=response.data.list;
-        this.msg.total=response.code
+        this.msg.total=response.data.code
       }
       utils.axiosMethod({
         method:"Post",
@@ -103,11 +104,22 @@ export default {
         callback:success
       })
     },
+    gotoArticle(index){
+      this.articleId=this.lists[index].id;
+      this.$router.push('/info?artId='+this.articleId);
+    },
+    gotoUser(index){
+      this.userId=this.lists[index].userId;
+    },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
+      this.msg.size=val;
+      this.searchBtn();
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
+      this.msg.current=val;
+      this.searchBtn();
     }
   }
 }
