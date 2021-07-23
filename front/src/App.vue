@@ -2,36 +2,11 @@
   <div id="login">
 
     <div class="navbar">
-      <a href="#" class="right">登录</a>
+      <router-link to="/" class="rout">主页</router-link>
+      <router-link to="/register" class="rout-right">注册</router-link>
+      <router-link to="/login" class="rout-right">登录</router-link>
     </div>
-
-    <div class="header">
-      <h1>欢迎来到Blog</h1>
-      <p>创造自己的精彩</p>
-    </div>
-
-    <div class="navbar">
-      <a href="#">链接</a>
-      <a href="#">链接</a>
-      <a href="#">链接</a>
-      <a href="#" class="right">链接</a>
-    </div>
-
-    <div class="row">
-      <div class="side">
-        <el-row>
-          <el-col :span="8"><div class="grid-content bg-purple"><router-link to="/">Home</router-link></div></el-col>
-          <el-col :span="8"><div class="grid-content bg-purple-light"><router-link to="/about">About</router-link></div></el-col>
-          <el-col :span="8"><div class="grid-content bg-purple"><router-link to="/me">Me</router-link></div></el-col>
-        </el-row>
-      </div>
-      <div class="main">
-        <router-view></router-view>      </div>
-    </div>
-
-    <div class="footer">
-      <h2>底部内容</h2>
-    </div>
+    <router-view/>
   </div>
 </template>
 
@@ -48,17 +23,24 @@ export default {
     }
   },
   methods:{
-    doLogin(){
+    doLogin(value){
       let success=(response)=>{
-        alert(response.data.msg);
+          this.$message({
+            type: 'success',
+            message: '登录成功'});
       }
-      utils.axiosMethod({
+      if(value.username.equals(""))
+        alert("请输入名字！");
+      else if(value.password.equals(""))
+        alert("请输入密码！");
+      else
+        utils.axiosMethod({
         method:"POST",
         url:"/user/login/",
-        data:this.loginData,
+        data:value,
         callback:success
       })
-    }
+    },
   }
 }
 </script>
@@ -102,7 +84,7 @@ body {
 }
 
 /* 导航栏样式 */
-.navbar a {
+.navbar .rout {
   float: left;
   display: block;
   color: white;
@@ -111,16 +93,29 @@ body {
   text-decoration: none;
 }
 
-/* 右侧链接*/
-.navbar a.right {
-  float: right;
-}
+.navbar .rout-right {
+   float: right;
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 14px 20px;
+   text-decoration: none;
+ }
 
 /* 鼠标移动到链接的颜色 */
 .navbar a:hover {
   background-color: #ddd;
   color: black;
 }
+
+.navbar .input{
+  text-align: left;
+  width: 60%;
+  height: 10px;
+}
+.navbar .labal{
+  color: #dddddd;
+ }
 
 /* 列容器 */
 .row {

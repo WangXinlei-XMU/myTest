@@ -1,10 +1,10 @@
 package com.example.demo.dao;
 
-import com.example.demo.model.Customer;
-import com.example.demo.model.CustomerSimple;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 import org.springframework.stereotype.Repository;
+import com.example.demo.model.Customer;
+import com.example.demo.model.CustomerSimple;
 
 import java.util.List;
 
@@ -55,4 +55,9 @@ public interface CustomerDao {
     public void updateCustomer(@Param("customer") Customer customer);
 
     public List<Customer> selectCustomer(Customer sample);
+
+    @Insert("insert into customer (name,password,email,phone,type,state) values " +
+            "(#{name},#{password},#{email}," +
+            "#{phone},0,0)")
+    public void addCustomer(Customer customer);
 }

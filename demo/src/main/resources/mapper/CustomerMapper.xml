@@ -26,6 +26,7 @@
         </where>
     </select>
 
+
     <resultMap id="CustomerMap" type="com.example.demo.model.Customer">
         <id property="id" column="id" jdbcType="INTEGER"></id>
         <result column = "name" property = "name" jdbcType = "VARCHAR"></result>

@@ -19,16 +19,31 @@ public class CustomerController {
     @ResponseBody
     @PostMapping("/login")
     public MyResult login(@RequestBody Customer customer){
-       Customer customer1=customerService.login(customer.getName(),customer.getPassword());
-       MyResult myResult= new MyResult();
-       if(customer1!=null){
-           myResult.setCode(0);
-           myResult.setMsg("登录成功！");
-       }
-       else {
-           myResult.setCode(1);
-           myResult.setMsg("登录失败！");
-       }
-       return myResult;
+        Customer customer1=customerService.login(customer.getName(),customer.getPassword());
+        MyResult myResult= new MyResult();
+        if(customer1!=null){
+            myResult.setCode(0);
+            myResult.setMsg("登录成功！");
+        }
+        else {
+            myResult.setCode(1);
+            myResult.setMsg("登录失败！");
+        }
+        return myResult;
+    }
+    @ResponseBody
+    @PostMapping("/register")
+    public MyResult register(@RequestBody Customer customer){
+        Customer customer1=customerService.register(customer);
+        MyResult myResult= new MyResult();
+        if(customer1!=null){
+            myResult.setCode(0);
+            myResult.setMsg("注册成功！");
+        }
+        else {
+            myResult.setCode(1);
+            myResult.setMsg("注册失败！");
+        }
+        return myResult;
     }
 }

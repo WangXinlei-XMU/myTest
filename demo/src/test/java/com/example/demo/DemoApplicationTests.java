@@ -32,6 +32,14 @@ class DemoApplicationTests {
 		System.out.println(service.updateByCustomer(customer));
 	}
 
+
+	@Test
+	public void test31(){
+		Customer customer= new Customer();
+		customer.setName("name1");
+		System.out.println(service.selectCustomer(customer));
+	}
+
 	@Test
 	public void test4(){
 		System.out.println(service.login("name1","123456"));
@@ -44,5 +52,12 @@ class DemoApplicationTests {
 	@Test
 	public void test6(){
 		System.out.println(articleService.getLabel(2));
+	}
+	@Test
+	public void test7(){
+		Customer customer=new Customer();
+		customer.setName("name");
+		customer.setPassword("ef");
+		System.out.println(service.register(customer));
 	}
 }

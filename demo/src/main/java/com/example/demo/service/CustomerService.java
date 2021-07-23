@@ -67,4 +67,19 @@ public class CustomerService {
             return list.get(0);
         return null;
     }
+    //注册
+    public Customer register(Customer customer){
+        Customer customer1=new Customer();
+        customer1.setName(customer.getName());
+        if(customerDao.selectCustomer(customer1).size()>0)
+            return null;
+        System.out.println(customer1);
+        customerDao.addCustomer(customer);
+        return customer;
+    }
+    //查找用户
+    public List<Customer> selectCustomer(Customer customer){
+        return customerDao.selectCustomer(customer);
+    }
+
 }

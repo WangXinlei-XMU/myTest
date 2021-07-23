@@ -1,112 +1,89 @@
 <template>
-  <div id="hi">
-    <form>
-      <input type="button" value="登录" @click="doLogin">
-  </form>
+  <div id="me">
+    <h1>登录</h1>
+    <div class="login-box">
+      <input type="text" v-model.trim="loginData.username" placeholder="用户名" class="input">
+
+      <input type="password" v-model.trim="loginData.password" placeholder="密码" class="input">
+
+      <el-button type="primary" @click="loginBtn">登录</el-button>
+    </div>
+
   </div>
 </template>
-<style>
-* {
-  box-sizing: border-box;
+
+
+<script>
+
+import utils from "../../utils/utils";
+
+export default {
+  name: 'Me',
+
+  data()
+  {
+    return{
+      loginData:{
+        username:"",
+        password:""
+      }
+    }
+  },
+  methods:{
+    loginBtn(){
+      if (!this.loginData.username) {
+      this.$message.error('请输入用户名');
+      return;
+    }
+      if (!this.loginData.password) {
+        this.$message.error('请输入密码');
+        return;
+      }
+      this.doLogin()
+    },
+    doLogin(){
+      let success=(response)=>{
+        this.$message({
+          type: 'success',
+          message: response.data.msg});
+      }
+          utils.axiosMethod({
+          method:"POST",
+          url:"/user/login/",
+          data:this.loginData,
+          callback:success
+        })
+    }
+  }
+}
+</script>
+
+<style scoped>
+#me {
 }
 
-/* body 样式 */
-body {
-  font-family: Arial;
-  margin: 0;
+#me .h1{
+  margin: 0 auto;
+}
+#me .login-box {
+  padding-top: 30px;
+  width: 60%;
+  margin: 0 auto;
 }
 
-/* 标题 */
-.header {
-  padding: 80px;
-  text-align: center;
-  background: #1abc9c;
-  color: white;
-}
-
-/* 标题字体加大 */
-.header h1 {
-  font-size: 40px;
-}
-
-/* 导航 */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-}
-
-/* 导航栏样式 */
-.navbar a {
-  float: left;
+#me .login-box .input {
   display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
+  width: 98%;
+  height: 28px;
+  margin: 15px 0;
 }
 
-/* 右侧链接*/
-.navbar a.right {
-  float: right;
-}
-
-/* 鼠标移动到链接的颜色 */
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* 列容器 */
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-}
-
-/* 创建两个列 */
-/* 边栏 */
-.side {
-  -ms-flex: 30%; /* IE10 */
-  flex: 30%;
-  background-color: #f1f1f1;
-  padding: 20px;
-}
-
-/* 主要的内容区域 */
-.main {
-  -ms-flex: 70%; /* IE10 */
-  flex: 70%;
-  background-color: white;
-  padding: 20px;
-}
-
-/* 测试图片 */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
-
-/* 底部 */
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #ddd;
-}
-
-/* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
-@media screen and (max-width: 700px) {
-  .row {
-    flex-direction: column;
-  }
-}
-
-/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
-@media screen and (max-width: 400px) {
-  .navbar a {
-    float: none;
-    width: 100%;
-  }
+#me .login-box .el-button {
+  display: block;
+  width: 98%;
+  height: 35px;
+  line-height: 29px;
+  color: #fff;
+  border-radius: 5px;
 }
 </style>
