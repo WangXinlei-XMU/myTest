@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="注册登录的更新">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" afterDir="false" />
+    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="传文件信息到前端">
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/Search.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/MyResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/MyResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/ArticleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/ArticleDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/DemoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Main.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/front/src/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo/src/main/resources/mapper" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -62,34 +65,23 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\test\demo\src\main\resources\mapper" />
       <recent name="C:\Users\Administrator\Desktop\test\front\src\views" />
       <recent name="C:\Users\Administrator\Desktop\test\front\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\test\front\src\views" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.demo" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
-    <configuration name="DemoApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DemoApplicationTests.test31" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="PATTERN" value="com.example.demo.model.Vo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -101,11 +93,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DemoApplicationTests.test5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.model.Vo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="test5" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplicationTests.test6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.model.Vo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="test6" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplicationTests.test7" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="PATTERN" value="com.example.demo.model.Vo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,9 +157,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.DemoApplication" />
+        <item itemvalue="JUnit.DemoApplicationTests.test6" />
+        <item itemvalue="JUnit.DemoApplicationTests.test5" />
         <item itemvalue="JUnit.DemoApplicationTests.test7" />
         <item itemvalue="JUnit.DemoApplicationTests.test31" />
-        <item itemvalue="JUnit.DemoApplicationTests" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +201,15 @@
       <workItem from="1627016661940" duration="678000" />
       <workItem from="1627018979591" duration="874000" />
       <workItem from="1627020181403" duration="1794000" />
-      <workItem from="1627021988142" duration="1355000" />
+      <workItem from="1627021988142" duration="1793000" />
+      <workItem from="1627024172812" duration="1821000" />
+      <workItem from="1627026008359" duration="1792000" />
+      <workItem from="1627027816769" duration="1793000" />
+      <workItem from="1627029623911" duration="1778000" />
+      <workItem from="1627037771741" duration="1781000" />
+      <workItem from="1627039570651" duration="1793000" />
+      <workItem from="1627041385836" duration="1791000" />
+      <workItem from="1627043194492" duration="1446000" />
     </task>
     <task id="LOCAL-00001" summary="commint">
       <created>1626940860347</created>
@@ -206,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627014642341</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="传文件信息到前端">
+      <created>1627023482705</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1627023482705</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +282,7 @@
     <MESSAGE value="1" />
     <MESSAGE value="vue导航，首页初步设计" />
     <MESSAGE value="注册登录的更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="注册登录的更新" />
+    <MESSAGE value="传文件信息到前端" />
+    <option name="LAST_COMMIT_MESSAGE" value="传文件信息到前端" />
   </component>
 </project>

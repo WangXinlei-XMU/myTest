@@ -1,13 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.MyResult;
+import com.example.demo.model.Vo.MyResult;
+import com.example.demo.model.Vo.Search;
 import com.example.demo.model.ArticleSimple;
 import com.example.demo.service.ArticleService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/article")
@@ -17,12 +17,18 @@ public class ArticleController {
     ArticleService articleService;
 
     @ResponseBody
-    @GetMapping("/search")
-    public MyResult register(){
-        List<ArticleSimple> articleSimpleList= articleService.getArticleByUser(1);
-        System.out.println(articleSimpleList);
+    @PostMapping("/search")
+    public MyResult search(@RequestBody(required = false)Search search){
+        Search search1=new Search();
+        if(search!=null)
+            search1=search;
+//        System.out.println("key"+key);
+        PageInfo<ArticleSimple> articleSimpleList= articleService.getArticleByKey(search1);
+//        System.out.println(search1);
         MyResult myResult= new MyResult();
-        myResult.setList(articleSimpleList);
+        myResult.setCode((int) articleSimpleList.getTotal());
+        myResult.setList(articleSimpleList.getList());
+//        System.out.println(articleSimpleList);
         return myResult;
     }
 }

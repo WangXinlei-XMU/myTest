@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.MyResult;
+import com.example.demo.model.Vo.MyResult;
 import com.example.demo.model.Customer;
 import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;

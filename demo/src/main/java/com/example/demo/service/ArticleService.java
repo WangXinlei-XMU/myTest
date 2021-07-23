@@ -1,9 +1,11 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Vo.Search;
 import com.example.demo.dao.ArticleDao;
 import com.example.demo.dao.CustomerDao;
-import com.example.demo.model.Article;
 import com.example.demo.model.ArticleSimple;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +26,7 @@ public class ArticleService {
         String name=customerDao.getCustomerById(userId).getName();
         List<ArticleSimple> list= articleDao.getArticleByUser(userId);
         for(ArticleSimple article:list){
-            article.setUser(name);
+            article.setLabels(articleDao.getLabel(article.getId()));
         }
         return list;
     }
@@ -34,7 +36,17 @@ public class ArticleService {
     }
 
     //通过限制条件查询
-    public List<ArticleSimple> getArticle() {
-        return null;
+    public PageInfo<ArticleSimple> getArticleByKey(Search search) {
+        PageInfo<ArticleSimple> pageInfo=page( articleDao.getArticleByKey
+                (search.getSearch()),search.getCurrent(),search.getSize());
+        return pageInfo;
+    }
+    //分页
+    public PageInfo<ArticleSimple> page(List<ArticleSimple> list,Integer pageNum,Integer pageSize){
+        // 1 设置分页页码和显示条数
+        PageHelper.startPage(pageNum, pageSize,true);
+        // 2 集合封装到PageInfo类中
+        PageInfo<ArticleSimple> pages = new PageInfo<>(list);
+        return pages;
     }
 }

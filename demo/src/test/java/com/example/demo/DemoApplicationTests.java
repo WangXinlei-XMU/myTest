@@ -51,7 +51,7 @@ class DemoApplicationTests {
 	}
 	@Test
 	public void test6(){
-		System.out.println(articleService.getLabel(2));
+//		System.out.println(articleService.getArticleByKey());
 	}
 	@Test
 	public void test7(){

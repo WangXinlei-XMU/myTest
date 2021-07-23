@@ -11,7 +11,6 @@ public class ArticleSimple {
     String user;
     String title;
     List<String> labels;
-    String url;
     LocalDateTime createTime;
     Byte state;
 }
