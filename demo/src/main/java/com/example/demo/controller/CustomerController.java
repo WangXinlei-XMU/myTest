@@ -31,6 +31,7 @@ public class CustomerController {
         }
         return myResult;
     }
+
     @ResponseBody
     @PostMapping("/register")
     public MyResult register(@RequestBody Customer customer){

@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="vue导航，首页初步设计">
-      <change afterPath="$PROJECT_DIR$/front/src/views/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="注册登录的更新">
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/CustomerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/mapper/CustomerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/mapper/CustomerMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/DemoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Main.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Register.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,6 +57,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -177,7 +171,12 @@
       <workItem from="1627007810550" duration="1786000" />
       <workItem from="1627009617081" duration="1831000" />
       <workItem from="1627012491543" duration="1801000" />
-      <workItem from="1627014309656" duration="294000" />
+      <workItem from="1627014309656" duration="1643000" />
+      <workItem from="1627015968046" duration="680000" />
+      <workItem from="1627016661940" duration="678000" />
+      <workItem from="1627018979591" duration="874000" />
+      <workItem from="1627020181403" duration="1794000" />
+      <workItem from="1627021988142" duration="1355000" />
     </task>
     <task id="LOCAL-00001" summary="commint">
       <created>1626940860347</created>
@@ -200,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626956510271</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="注册登录的更新">
+      <created>1627014642341</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1627014642341</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +241,7 @@
     <MESSAGE value="commint1" />
     <MESSAGE value="1" />
     <MESSAGE value="vue导航，首页初步设计" />
-    <option name="LAST_COMMIT_MESSAGE" value="vue导航，首页初步设计" />
+    <MESSAGE value="注册登录的更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="注册登录的更新" />
   </component>
 </project>

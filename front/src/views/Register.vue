@@ -39,6 +39,7 @@ export default {
     }
   },
   methods:{
+    //连接按键，检查输入
     registerBtn() {
       if (!this.loginData.name) {
         this.$message.error('请输入用户名');
@@ -66,6 +67,7 @@ export default {
       }
       this.doRegister();
     },
+    //连接后端
     doRegister(){
       let success=(response)=>{
         this.$message({

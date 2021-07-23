@@ -1,6 +1,5 @@
 <template>
   <div id="login">
-
     <div class="navbar">
       <router-link to="/" class="rout">主页</router-link>
       <router-link to="/register" class="rout-right">注册</router-link>
