@@ -59,6 +59,11 @@ module.exports = {
         target:"http://localhost:8081/",
         secure:false,
         changeOrgin:true
+      },
+      '/comment/*':{
+        target:"http://localhost:8081/",
+        secure:false,
+        changeOrgin:true
       }
     }
   },

@@ -5,6 +5,7 @@ import com.example.demo.model.Customer;
 import com.example.demo.model.Vo.ArticleLimitVo;
 import com.example.demo.model.Vo.Search;
 import com.example.demo.service.ArticleService;
+import com.example.demo.service.CommentService;
 import com.example.demo.service.CustomerService;
 import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,8 @@ class DemoApplicationTests {
 	CustomerService service;
 	@Autowired
 	ArticleService articleService;
+	@Autowired
+	CommentService commentService;
 
 	@Test
 	public void test1(){
@@ -51,10 +54,10 @@ class DemoApplicationTests {
 		System.out.println(service.login("name1","123456"));
 	}
 
-	@Test
-	public void test5(){
-		System.out.println(articleService.getArticleByUser(1));
-	}
+//	@Test
+//	public void test5(){
+//		System.out.println(articleService.getArticleByUser(1));
+//	}
 	@Test
 	public void test6(){
 		Search search=new Search();
@@ -75,5 +78,15 @@ class DemoApplicationTests {
 		PageInfo<ArticleSimple> articleSimples=articleService.getArticleByLimit(vo);
 		List<ArticleSimple> list=articleSimples.getList();
 		System.out.println(list);
+	}
+	@Test
+	public void test9(){
+		Search search=new Search();
+		System.out.println(articleService.getArticleByUser(search,1));
+	}
+	@Test
+	public void test10(){
+		Search search=new Search();
+		System.out.println(commentService.getCommentByArticle(search,1));
 	}
 }

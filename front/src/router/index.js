@@ -5,6 +5,7 @@ import Main from '../views/Main'
 import Login from "../views/Login";
 import Register from "../views/Register";
 import Info from "../views/Info";
+import UserInfo from "../views/UserInfo";
 
 Vue.use(Router)
 
@@ -30,6 +31,12 @@ export default new Router({
       name:'info',
       path:'/info',
       component:Info
+    },
+    {
+      name:'userInfo',
+      path:'/userInfo',
+      component:UserInfo
     }
+
   ]
 })

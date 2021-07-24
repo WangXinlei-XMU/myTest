@@ -38,10 +38,32 @@ public class ArticleController {
 
     @ResponseBody
     @GetMapping("/{articleId}")
-    public MyResult getArticleById(@PathVariable("articleId") Integer id){
+    public MyResult getArticleById(
+            @PathVariable("articleId") Integer id){
         Article article= articleService.getArticleById(id);
         MyResult myResult=new MyResult();
         myResult.setObj(article);
+        return myResult;
+    }
+
+
+    @ResponseBody
+    @PostMapping("/user/{userId}")
+    public MyResult getArticleByUserId(
+            @PathVariable("userId") Integer userId,
+            @RequestBody(required = false) Search search){
+        Search search1=new Search();
+        if(search!=null)
+            search1=search;
+
+//        System.out.println(search1);
+//        System.out.println(userId);
+
+        PageInfo<ArticleSimple> articleSimpleList= articleService.getArticleByUser(search1,userId);
+//        System.out.println(articleSimpleList);
+        MyResult myResult= new MyResult();
+        myResult.setCode((int) articleSimpleList.getTotal());
+        myResult.setList(articleSimpleList.getList());
         return myResult;
     }
 

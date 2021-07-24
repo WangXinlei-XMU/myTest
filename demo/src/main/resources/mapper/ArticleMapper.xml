@@ -37,6 +37,7 @@
         <result column = "user_id" property = "userId" jdbcType = "INTEGER"></result>
         <result column = "name" property = "user" jdbcType = "VARCHAR"></result>
         <result column = "title" property = "title" jdbcType = "VARCHAR"></result>
+        <result column = "back_url" property = "backUrl" jdbcType = "VARCHAR"></result>
         <result column = "create_time" property = "createTime" jdbcType = "VARCHAR"></result>
         <result column = "state" property = "state" jdbcType = "TINYINT"></result>
     </resultMap>

@@ -24,13 +24,15 @@ public class ArticleService {
     CustomerDao customerDao;
 
     //获取某人的文章
-    public List<ArticleSimple> getArticleByUser(Integer userId){
-        String name=customerDao.getCustomerById(userId).getName();
+    public PageInfo<ArticleSimple> getArticleByUser(Search search,Integer userId){
+        PageHelper.startPage(search.getCurrent(),search.getSize(),true);
+
         List<ArticleSimple> list= articleDao.getArticleByUser(userId);
-        for(ArticleSimple article:list){
-            article.setLabels(articleDao.getLabel(article.getId()));
+        for(ArticleSimple articleSimple:list){
+            articleSimple.setLabels(articleDao.getLabel(articleSimple.getId()));
         }
-        return list;
+        PageInfo<ArticleSimple> pageInfo = new PageInfo<>(list);
+        return pageInfo;
     }
     //获取文章标签
     public List<String> getLabel(Integer articleId){

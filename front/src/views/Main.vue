@@ -63,7 +63,7 @@
             </li>
             <el-col :span="8" v-for="(article,index) in lists" v-bind:key="index">
               <el-card :body-style="{ padding: '10px' }">
-                <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+                <img v-if="article.backUrl!==null" :src="article.backUrl" class="image"/>
                 <div style="padding: 14px;">
                   <span class="article-user" @click="gotoArticle(index)">文章标题：{{ article.title }}</span>
                   <div>
@@ -83,19 +83,12 @@
             </el-col>
           </div>
         </el-tab-pane>
-        <el-tab-pane label="配置管理">
-
-
-
-
-        </el-tab-pane>
-        <el-tab-pane label="角色管理">
-
-
+        <el-tab-pane label="用户">
 
 
         </el-tab-pane>
-        <el-tab-pane label="定时任务补偿">
+        <el-tab-pane label="个人中心">
+
 
 
 
@@ -167,11 +160,13 @@ export default {
     //前往作者页面
     gotoUser(index){
       this.userId=this.lists[index].userId;
+      this.$router.push('/userInfo?userId='+this.userId);
     },
     //页码改变
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
       this.msg.size=val;
+      this.msg.current=1;
       this.searchBtn();
     },
     //页码改变

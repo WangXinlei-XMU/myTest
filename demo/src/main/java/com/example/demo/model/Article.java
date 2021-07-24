@@ -13,6 +13,7 @@ public class Article {
     String title;
     String context;
     String summary;
+    String backUrl;
     List<String> labels;
     LocalDateTime createTime;
     LocalDateTime modifyTime;
