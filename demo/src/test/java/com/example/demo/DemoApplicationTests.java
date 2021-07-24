@@ -1,12 +1,18 @@
 package com.example.demo;
 
+import com.example.demo.model.ArticleSimple;
 import com.example.demo.model.Customer;
+import com.example.demo.model.Vo.ArticleLimitVo;
+import com.example.demo.model.Vo.Search;
 import com.example.demo.service.ArticleService;
 import com.example.demo.service.CustomerService;
 import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -51,7 +57,8 @@ class DemoApplicationTests {
 	}
 	@Test
 	public void test6(){
-		System.out.println(articleService.getArticleById(1));
+		Search search=new Search();
+		System.out.println(articleService.getArticleByKey(search));
 	}
 	@Test
 	public void test7(){
@@ -59,5 +66,14 @@ class DemoApplicationTests {
 		customer.setName("name");
 		customer.setPassword("ef");
 		System.out.println(service.register(customer));
+	}
+	@Test
+	public void test8(){
+		LocalDateTime date1=articleService.getArticleById(2).getCreateTime();
+		ArticleLimitVo vo=new ArticleLimitVo();
+		vo.setDate1(date1);
+		PageInfo<ArticleSimple> articleSimples=articleService.getArticleByLimit(vo);
+		List<ArticleSimple> list=articleSimples.getList();
+		System.out.println(list);
 	}
 }

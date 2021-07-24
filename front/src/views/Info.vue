@@ -1,18 +1,5 @@
 <template>
   <div>
-    <el-container>
-      <el-header>
-        <el-header>
-          <label>{{article.title}}</label>
-        </el-header>
-      </el-header>
-      <el-container>
-        <el-container>
-          <el-main>{{article.context}}</el-main>
-          <el-footer>{{article.user}}</el-footer>
-        </el-container>
-      </el-container>
-    </el-container>
   </div>
 </template>
 <script>
@@ -49,6 +36,12 @@ export default {
 </script>
 
 <style>
+body {
+  background:url("https://img-blog.csdnimg.cn/20200516150514343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lvdWFyZW15c2NhcmVk,size_16,color_FFFFFF,t_70")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+  background-size:cover;  /* 让背景图基于容器大小伸缩 */
+  background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+}
 .el-header, .el-footer {
   background-color: #B3C0D1;
   color: #333;

@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import com.example.demo.model.Article;
 import com.example.demo.model.ArticleSimple;
+import com.example.demo.model.Vo.ArticleLimitVo;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
@@ -80,4 +81,6 @@ public interface ArticleDao {
             }
     )
     public Article getArticleById(@Param("id")Integer id);
+
+    List<ArticleSimple> getArticleByLimit(ArticleLimitVo vo);
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间：通过namespace属性指定该映射文件是实现哪一个接口的，值是接口的完全限定名(包名.类名) -->
+<mapper namespace="com.example.demo.dao.ArticleDao">
+    <!--
+    select 查询动作
+    id属性：指定接口中要实现的方法名
+	resultType属性：返回值类型，如果是集合指的是集合中泛型的完全限定名
+	 -->
+    <select id="getArticleByLimit" resultMap="ArticleSimpleMap">
+        select a.id,a.user_id,c.name,a.title,
+        a.context,a.summary,a.modify_time,a.create_time,a.state
+        from article a,customer c
+        <where>
+            a.user_id=c.id
+            <if test="user!=null and user!=''">
+                and name=#{user}
+            </if>
+            <if test="title!=null and title!=''">
+                and title=#{title}
+            </if>
+            <if test="date1!=null">
+                and create_time &gt; #{date1}
+            </if>
+            <if test="date2!=null">
+                and create_time &lt; #{date2}
+            </if>
+        </where>
+    </select>
+
+
+    <resultMap id="ArticleSimpleMap" type="com.example.demo.model.ArticleSimple">
+        <id property="id" column="id" jdbcType="INTEGER"></id>
+        <result column = "user_id" property = "userId" jdbcType = "INTEGER"></result>
+        <result column = "name" property = "user" jdbcType = "VARCHAR"></result>
+        <result column = "title" property = "title" jdbcType = "VARCHAR"></result>
+        <result column = "create_time" property = "createTime" jdbcType = "VARCHAR"></result>
+        <result column = "state" property = "state" jdbcType = "TINYINT"></result>
+    </resultMap>
+
+</mapper>

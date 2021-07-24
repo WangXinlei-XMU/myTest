@@ -9,7 +9,7 @@
     <div>
       <el-tabs :tab-position="tabPosition" style="height: 200px;">
         <el-tab-pane label="文章">
-
+<!--          搜索框-->
           <div class="navbar">
             <label class="labal">文章搜索</label>
             <el-input class="input"
@@ -19,20 +19,32 @@
             </el-input>
             <el-button type="primary" icon="el-icon-search" @click="searchBtn">搜索</el-button>
           </div>
-          <div>
-            <li v-if="lists.length===0">
-              <el-empty description="没有搜到有效信息"></el-empty>
-            </li>
-            <ul v-for="(article,index) in lists" v-bind:key="index" >
-              <span>
-                <li class="article-title" @click="gotoArticle(index)">文章标题：{{ article.title }}</li>
-                <li class="article-user" @click="gotoUser(index)">作者：{{ article.user }}</li>
-                <li class="article-title">标签：{{ article.labels }}</li>
-                <li class="article-time">时间：{{ article.createTime }}</li>
-              </span>
-            </ul>
-          </div>
-
+<!--          限制条件-->
+          <el-collapse>
+            <el-collapse-item title="搜索限制" name="1">
+              <el-form ref="form" label-width="80px">
+                <el-form-item label="作者">
+                  <el-input v-model.trim="msg.user"></el-input>
+                </el-form-item>
+                <el-form-item label="标题">
+                  <el-input v-model.trim="msg.title"></el-input>
+                </el-form-item>
+                <el-form-item label="发布时间">
+                  <el-col :span="11">
+                    <el-date-picker type="date" placeholder="选择日期" v-model.trim="msg.date1" style="width: 100%;"></el-date-picker>
+                  </el-col>
+                  <el-col class="line" :span="2">-</el-col>
+                  <el-col :span="11">
+                    <el-date-picker type="date" placeholder="选择日期" v-model.trim="msg.date2" style="width: 100%;"></el-date-picker>
+                  </el-col>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" @click="onSubmit">搜索</el-button>
+                </el-form-item>
+              </el-form>
+            </el-collapse-item>
+          </el-collapse>
+<!--          页码-->
           <div class="block">
             <el-pagination
               @size-change="handleSizeChange"
@@ -43,6 +55,32 @@
               layout="total, sizes, prev, pager, next, jumper"
               :total="msg.total">
             </el-pagination>
+          </div>
+<!--          显示-->
+          <div>
+            <li v-if="lists.length===0">
+              <el-empty description="没有搜到有效信息"></el-empty>
+            </li>
+            <el-col :span="8" v-for="(article,index) in lists" v-bind:key="index">
+              <el-card :body-style="{ padding: '10px' }">
+                <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+                <div style="padding: 14px;">
+                  <span class="article-user" @click="gotoArticle(index)">文章标题：{{ article.title }}</span>
+                  <div>
+                    <span class="article-user" @click="gotoUser(index)">作者：{{ article.user }}</span>
+                  </div>
+                  <div class="bottom clearfix">
+                    <time class="time">创造时间：{{ article.createTime }}</time>
+                  </div>
+                  <div>
+                    <span>标签：</span>
+                    <span class="article-label" v-for="(label,i) in article.labels" v-bind:key="i">
+                      <el-tag>{{ label }}</el-tag>
+                    </span>
+                  </div>
+                </div>
+              </el-card>
+            </el-col>
           </div>
         </el-tab-pane>
         <el-tab-pane label="配置管理">
@@ -81,7 +119,11 @@ export default {
         search:"",
         size:5,
         current:1,
-        total:0
+        total:0,
+        user:"",
+        title:'',
+        date1:'',
+        date2:''
       },
       articleId:-1,
       userId:-1,
@@ -92,6 +134,7 @@ export default {
     this.searchBtn();
   },
   methods:{
+    //搜索
     searchBtn(){
       let success=(response)=>{
         this.lists=response.data.list;
@@ -104,18 +147,34 @@ export default {
         callback:success
       })
     },
+    onSubmit(){
+      let success=(response)=>{
+        this.lists=response.data.list;
+        this.msg.total=response.data.code
+      }
+      utils.axiosMethod({
+        method:"Post",
+        url:"/article/limit/",
+        data:this.msg,
+        callback:success
+      })
+    },
+    //前往文章页面
     gotoArticle(index){
       this.articleId=this.lists[index].id;
       this.$router.push('/info?artId='+this.articleId);
     },
+    //前往作者页面
     gotoUser(index){
       this.userId=this.lists[index].userId;
     },
+    //页码改变
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
       this.msg.size=val;
       this.searchBtn();
     },
+    //页码改变
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
       this.msg.current=val;
@@ -124,3 +183,35 @@ export default {
   }
 }
 </script>
+<style>
+.time {
+  font-size: 13px;
+  color: #999;
+}
+
+.bottom {
+  margin-top: 13px;
+  line-height: 12px;
+}
+
+.button {
+  padding: 0;
+  float: right;
+}
+
+.image {
+  width: 100%;
+  display: block;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both
+}
+
+</style>

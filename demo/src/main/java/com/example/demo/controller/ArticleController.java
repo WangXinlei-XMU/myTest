@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Article;
+import com.example.demo.model.Vo.ArticleLimitVo;
 import com.example.demo.model.Vo.MyResult;
 import com.example.demo.model.Vo.Search;
 import com.example.demo.model.ArticleSimple;
@@ -41,6 +42,17 @@ public class ArticleController {
         Article article= articleService.getArticleById(id);
         MyResult myResult=new MyResult();
         myResult.setObj(article);
+        return myResult;
+    }
+
+    @ResponseBody
+    @PostMapping("/limit")
+    public MyResult getArticleService(@RequestBody ArticleLimitVo articleLimitVo) {
+        PageInfo<ArticleSimple> articleSimpleList= articleService.getArticleByLimit(articleLimitVo);
+        MyResult myResult=new MyResult();
+
+        myResult.setCode((int) articleSimpleList.getTotal());
+        myResult.setList(articleSimpleList.getList());
         return myResult;
     }
 }
