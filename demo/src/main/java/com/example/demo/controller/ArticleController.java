@@ -1,15 +1,20 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Article;
+import com.example.demo.model.Label;
 import com.example.demo.model.Vo.ArticleLimitVo;
 import com.example.demo.model.Vo.MyResult;
 import com.example.demo.model.Vo.Search;
 import com.example.demo.model.ArticleSimple;
 import com.example.demo.service.ArticleService;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -75,6 +80,43 @@ public class ArticleController {
 
         myResult.setCode((int) articleSimpleList.getTotal());
         myResult.setList(articleSimpleList.getList());
+        return myResult;
+    }
+
+    @ResponseBody
+    @DeleteMapping("/delete/{id}")
+    public MyResult deleteArticle(@PathVariable("id") Integer id){
+        MyResult myResult=new MyResult();
+        System.out.println(id);
+        articleService.deleteArticle(id);
+        myResult.setCode(0);
+        return myResult;
+    }
+
+    @ResponseBody
+    @GetMapping("/labels")
+    public MyResult getLabel(){
+        MyResult myResult=new MyResult();
+        List<Label> list=articleService.getLabels();
+        myResult.setList(list);
+        return myResult;
+    }
+
+    @ResponseBody
+    @PostMapping("/newArticle")
+    public MyResult insertArticle(@RequestBody Article article){
+        MyResult myResult=new MyResult();
+        articleService.insertArticle(article);
+        myResult.setCode(0);
+        return myResult;
+    }
+
+    @ResponseBody
+    @PutMapping("/update")
+    public MyResult update(@RequestBody Article article){
+        MyResult myResult=new MyResult();
+        System.out.println(article);
+        articleService.update(article);
         return myResult;
     }
 }

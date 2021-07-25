@@ -27,7 +27,7 @@ class DemoApplicationTests {
 
 	@Test
 	public void test1(){
-		System.out.println(service.getAll(1,2).getList());
+//		System.out.println(service.getAll(1,2).getList());
 	}
 	@Test
 	public void test2(){
@@ -88,5 +88,9 @@ class DemoApplicationTests {
 	public void test10(){
 		Search search=new Search();
 		System.out.println(commentService.getCommentByArticle(search,1));
+	}
+	@Test
+	public void test11(){
+		System.out.println(articleService.getLabels());
 	}
 }

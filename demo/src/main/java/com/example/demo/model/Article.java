@@ -18,4 +18,9 @@ public class Article {
     LocalDateTime createTime;
     LocalDateTime modifyTime;
     Byte state;
+    String stateStr;
+    public void newArticle(){
+        this.setModifyTime(LocalDateTime.now());
+        this.setCreateTime(LocalDateTime.now());
+    }
 }

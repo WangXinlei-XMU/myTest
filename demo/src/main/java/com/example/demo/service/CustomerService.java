@@ -4,6 +4,7 @@ import com.example.demo.dao.ArticleDao;
 import com.example.demo.dao.CustomerDao;
 import com.example.demo.model.Customer;
 import com.example.demo.model.CustomerSimple;
+import com.example.demo.model.Vo.Search;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,15 @@ public class CustomerService {
 
     //获得简介信息
     @Transactional
-    public PageInfo<CustomerSimple> getAll(Integer pageNum, Integer pageSize){
+    public PageInfo<CustomerSimple> getAll(Search search){
         // 1 设置分页页码和显示条数
-        PageHelper.startPage(pageNum, pageSize,true);
+        PageHelper.startPage(search.getCurrent(), search.getSize(),true);
         // 依然调用查询所有的方法
-        List<CustomerSimple> list = customerDao.getAll();
+        List<CustomerSimple> list;
+        System.out.println(search.getSearch());
+        if(search.getSearch()==null||search.getSearch().equals(""))
+            list= customerDao.getAll();
+        else  list= customerDao.searchAll(search.getSearch());;
         // 2 集合封装到PageInfo类中
         PageInfo<CustomerSimple> pages = new PageInfo<>(list);
         return pages;
@@ -39,8 +44,10 @@ public class CustomerService {
     }
     //修改用户信息
     public Customer updateByCustomer(Customer customer){
+//        System.out.println(customer);
         customerDao.updateCustomer(customer);
         Customer customer1=customerDao.getCustomerById(customer.getId());
+        System.out.println(customer1);
         return customer1;
     }
     //注销用户

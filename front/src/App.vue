@@ -20,7 +20,7 @@ export default {
         username:"",
         password:""
       },
-      token:'-'
+      token:''
     }
   },
   created() {

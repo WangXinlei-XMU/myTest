@@ -14,5 +14,7 @@ public class ArticleSimple {
     String backUrl;
     List<String> labels;
     LocalDateTime createTime;
+    LocalDateTime modifyTime;
     Byte state;
+    String stateStr;
 }

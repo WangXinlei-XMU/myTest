@@ -3,7 +3,7 @@
     <div class="block">
       <el-image :src="article.backUrl"></el-image>
       <p class="title" >{{article.title}}</p>
-      <p class="user" >作者：{{article.user}}</p>
+      <p class="user" @click="gotoUser(-1)" >作者：{{article.user}}</p>
       <p class="time" >创造时间：{{article.createTime}}</p>
       <span class="label" >标签：</span>
       <span class="article-label" v-for="(label,i) in article.labels" v-bind:key="i">
@@ -111,7 +111,11 @@ export default {
     },
     //前往作者页面
     gotoUser(index){
-      this.$router.push('/userInfo?userId='+this.lists[index].userId);
+      if(index===-1)
+        this.$router.push('/userInfo?userId=' + this.article.userId);
+      else {
+        this.$router.push('/userInfo?userId=' + this.lists[index].userId);
+      }
     },
     //页码改变
     handleSizeChange(val) {

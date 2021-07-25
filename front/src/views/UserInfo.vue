@@ -2,7 +2,8 @@
   <div class="info">
     <div class="block">
       <div class="name" >
-        <el-avatar :size="100" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+        <el-avatar :size="100" v-if="user.avatarUrl!==null" :src="user.avatarUrl"></el-avatar>
+        <el-avatar :size="100" v-else src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
       </div>
       <p class="name">{{user.name}}</p>
       <p class="introduce" >个人简介:{{user.introduce}}</p>
@@ -48,9 +49,9 @@
           </div>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="评论" name="second">
-      </el-tab-pane>
-      <el-tab-pane label="个人信息" name="third">
+      <el-tab-pane label="个人信息" name="second">
+        <p>邮箱：{{user.email}}</p>
+        <p>电话：{{user.phone}}</p>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -72,11 +73,13 @@ export default {
         total:0,
       },
       user:{},
-      lists:[]
+      lists:[],
+      token:1
     }
   },
   created() {
     this.id=Number(this.$route.query.userId);
+    this.token=localStorage.getItem("token");
     this.getUser();
     this.getArticle();
   },

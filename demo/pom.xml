@@ -106,6 +106,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.apache.commons.io/commonsIO -->
+		<dependency>
+			<groupId>org.apache.commons.io</groupId>
+			<artifactId>commonsIO</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

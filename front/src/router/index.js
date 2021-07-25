@@ -6,6 +6,8 @@ import Login from "../views/Login";
 import Register from "../views/Register";
 import Info from "../views/Info";
 import UserInfo from "../views/UserInfo";
+import Me from "../views/Me";
+import Article from "../views/Article"
 
 Vue.use(Router)
 
@@ -36,6 +38,16 @@ export default new Router({
       name:'userInfo',
       path:'/userInfo',
       component:UserInfo
+    },
+    {
+      name:'me',
+      path:'/me',
+      component:Me
+    },
+    {
+      name:'article',
+      path:'/article',
+      component:Article
     }
 
   ]

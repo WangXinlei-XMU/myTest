@@ -4,28 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="文章搜素限制">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CommentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/CommentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/CommentVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/CommentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/views/UserInfo.vue" afterDir="false" />
+    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="登录评论限制">
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Label.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/views/Article.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/views/Me.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/ArticleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/ArticleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/CustomerDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Article.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/MyResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/MyResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/Search.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/CustomerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/DemoApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/views/Info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Info.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Main.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/views/UserInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/UserInfo.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,17 +104,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DemoApplicationTests.test6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DemoApplicationTests.test11" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.model.Vo.*" />
+          <option name="PATTERN" value="com.example.demo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.demo" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplicationTests" />
-      <option name="METHOD_NAME" value="test6" />
+      <option name="METHOD_NAME" value="test11" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -167,10 +168,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.DemoApplication" />
+        <item itemvalue="JUnit.DemoApplicationTests.test11" />
         <item itemvalue="JUnit.DemoApplicationTests.test10" />
         <item itemvalue="JUnit.DemoApplicationTests.test9" />
         <item itemvalue="JUnit.DemoApplicationTests.test8" />
-        <item itemvalue="JUnit.DemoApplicationTests.test6" />
       </list>
     </recent_temporary>
   </component>
@@ -246,7 +247,28 @@
       <workItem from="1627133215269" duration="1400000" />
       <workItem from="1627140739228" duration="1656000" />
       <workItem from="1627142568834" duration="1777000" />
-      <workItem from="1627144390269" duration="1408000" />
+      <workItem from="1627144390269" duration="1780000" />
+      <workItem from="1627146204975" duration="1608000" />
+      <workItem from="1627183302588" duration="1777000" />
+      <workItem from="1627185332432" duration="543000" />
+      <workItem from="1627188394825" duration="1791000" />
+      <workItem from="1627190210070" duration="1918000" />
+      <workItem from="1627192144854" duration="1850000" />
+      <workItem from="1627194132114" duration="1791000" />
+      <workItem from="1627195949806" duration="1789000" />
+      <workItem from="1627197762673" duration="1789000" />
+      <workItem from="1627199578224" duration="1791000" />
+      <workItem from="1627201401377" duration="1792000" />
+      <workItem from="1627203215335" duration="1792000" />
+      <workItem from="1627205022752" duration="1790000" />
+      <workItem from="1627210530298" duration="2023000" />
+      <workItem from="1627212571219" duration="1792000" />
+      <workItem from="1627214391460" duration="1769000" />
+      <workItem from="1627216202052" duration="2109000" />
+      <workItem from="1627225026921" duration="1795000" />
+      <workItem from="1627226844731" duration="1826000" />
+      <workItem from="1627228690973" duration="1796000" />
+      <workItem from="1627230511837" duration="1452000" />
     </task>
     <task id="LOCAL-00001" summary="commint">
       <created>1626940860347</created>
@@ -304,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627111754975</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="登录评论限制">
+      <created>1627145826605</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1627145826605</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,6 +373,7 @@
     <MESSAGE value="文章搜索" />
     <MESSAGE value="文章详情页初版" />
     <MESSAGE value="文章搜素限制" />
-    <option name="LAST_COMMIT_MESSAGE" value="文章搜素限制" />
+    <MESSAGE value="登录评论限制" />
+    <option name="LAST_COMMIT_MESSAGE" value="登录评论限制" />
   </component>
 </project>

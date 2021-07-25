@@ -84,14 +84,45 @@
           </div>
         </el-tab-pane>
         <el-tab-pane label="用户">
+          <!--          搜索框-->
+          <div class="navbar">
+            <label class="labal">用户搜索</label>
+            <el-input class="input"
+                      placeholder="请输入内容"
+                      prefix-icon="el-icon-search"
+                      v-model.trim="user.search">
+            </el-input>
+            <el-button type="primary" icon="el-icon-search" @click="searchUser">搜索</el-button>
+          </div>
+
+          <!--          页码-->
+          <div class="block">
+            <el-pagination
+              @size-change="handleSizeChangeUser"
+              @current-change="handleCurrentChangeUser"
+              :current-page="user.current"
+              :page-sizes="[5, 10, 20]"
+              :page-size="user.size"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="user.total">
+            </el-pagination>
+          </div>
 
 
+          <li v-if="lists.length===0">
+            <el-empty description="没有搜到有效信息"></el-empty>
+          </li>
+          <!--        显示-->
+          <li v-for="(user,index) in userLists" v-bind:key="index">
+            <p @click="gotoUser(index)">
+              <el-avatar v-if="user.avatarUrl!==null" :size="50" :src="user.avatarUrl"></el-avatar>
+              <el-avatar v-else :size="50" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+              <span class="comName">{{user.name}}</span>
+            </p>
+          </li>
         </el-tab-pane>
-        <el-tab-pane label="个人中心">
-
-
-
-
+        <el-tab-pane v-if="token!==null" label="个人主页">
+          <label @click="gotoMe">我的主页</label>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -118,13 +149,23 @@ export default {
         date1:'',
         date2:''
       },
+      user:{
+        search:"",
+        size:5,
+        current:1,
+        total:0,
+      },
       articleId:-1,
       userId:-1,
-      lists:[]
+      lists:[],
+      userLists:[],
+      token:-1
     }
   },
   created() {
     this.searchBtn();
+    this.searchUser();
+    this.token=localStorage.getItem("token");
   },
   methods:{
     //搜索
@@ -140,6 +181,7 @@ export default {
         callback:success
       })
     },
+    //限制条件搜索
     onSubmit(){
       let success=(response)=>{
         this.lists=response.data.list;
@@ -162,18 +204,51 @@ export default {
       this.userId=this.lists[index].userId;
       this.$router.push('/userInfo?userId='+this.userId);
     },
-    //页码改变
+    //文章页码改变
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
       this.msg.size=val;
       this.msg.current=1;
       this.searchBtn();
     },
-    //页码改变
+    //文章页码改变
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
       this.msg.current=val;
       this.searchBtn();
+    },
+    //用户页码改变
+    handleSizeChangeUser(val) {
+      console.log(`每页 ${val} 条`);
+      this.user.size=val;
+      this.user.current=1;
+      this.searchUser();
+    },
+    //用户页码改变
+    handleCurrentChangeUser(val) {
+      console.log(`当前页: ${val}`);
+      this.user.current=val;
+      this.searchBtn();
+    },
+    //查询用户
+    searchUser(){
+      let success=(response)=>{
+        this.userLists=response.data.list;
+        this.user.total=response.data.code
+      }
+      utils.axiosMethod({
+        method:"Post",
+        url:"/user/search",
+        data:this.user,
+        callback:success
+      })
+    },
+    //前往自己的主页
+    gotoMe(){
+      if(this.token!==null)
+        this.$router.push('/me');
+      else
+        this.$message.error('请先登录！');
     }
   }
 }

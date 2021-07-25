@@ -11,21 +11,34 @@ import java.util.List;
 @Repository("CustomerDao")
 @Mapper
 public interface CustomerDao {
-    //管理员获取全部用户
+    //获取全部用户
     @Select("select * from customer")
     @Results(
-        value = {
-                @Result(column = "id",property = "id",javaType = Integer.class,jdbcType = JdbcType.INTEGER),
-                @Result(column = "name",property = "name",javaType = String.class,jdbcType = JdbcType.VARCHAR),
-                @Result(column = "back_url",property = "backUrl",javaType = String.class,jdbcType = JdbcType.VARCHAR),
-                @Result(column = "type",property = "type",javaType = Byte.class,jdbcType = JdbcType.TINYINT),
-                @Result(column = "state",property = "state",javaType = Byte.class,jdbcType = JdbcType.TINYINT)
-        }
+            value = {
+                    @Result(column = "id",property = "id",javaType = Integer.class,jdbcType = JdbcType.INTEGER),
+                    @Result(column = "name",property = "name",javaType = String.class,jdbcType = JdbcType.VARCHAR),
+                    @Result(column = "back_url",property = "backUrl",javaType = String.class,jdbcType = JdbcType.VARCHAR),
+                    @Result(column = "type",property = "type",javaType = Byte.class,jdbcType = JdbcType.TINYINT),
+                    @Result(column = "state",property = "state",javaType = Byte.class,jdbcType = JdbcType.TINYINT)
+            }
     )
     public List<CustomerSimple> getAll();
 
+    //获取全部用户
+    @Select("select * from customer where name like '%${key}%'")
+    @Results(
+            value = {
+                    @Result(column = "id",property = "id",javaType = Integer.class,jdbcType = JdbcType.INTEGER),
+                    @Result(column = "name",property = "name",javaType = String.class,jdbcType = JdbcType.VARCHAR),
+                    @Result(column = "back_url",property = "backUrl",javaType = String.class,jdbcType = JdbcType.VARCHAR),
+                    @Result(column = "type",property = "type",javaType = Byte.class,jdbcType = JdbcType.TINYINT),
+                    @Result(column = "state",property = "state",javaType = Byte.class,jdbcType = JdbcType.TINYINT)
+            }
+    )
+    public List<CustomerSimple> searchAll(@Param("key") String key);
+
     //获得某个人的全部信息
-        @Select("select * from customer where id=#{id}")
+        @Select("select * from customer where id=#{id} and state=0")
         @Results(
                 value = {
                         @Result(column = "id",property = "id",javaType = Integer.class,jdbcType = JdbcType.INTEGER),
@@ -50,7 +63,8 @@ public interface CustomerDao {
             "phone=#{customer.phone}," +
             "back_url=#{customer.backUrl}," +
             "avatar_url=#{customer.avatarUrl}," +
-            "type=#{customer.type}" +
+            "type=#{customer.type}," +
+            "state=#{customer.state}" +
             " where id=#{customer.id}")
     public void updateCustomer(@Param("customer") Customer customer);
 
