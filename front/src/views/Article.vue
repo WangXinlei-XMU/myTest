@@ -88,7 +88,8 @@ export default {
       else this.article.state=1;
       // console.log(this.article)
       let success=(response)=>{
-        // this.labels=response.data.list;
+        if(response.data.code)
+          this.$message.success('成功修改');
       }
       utils.axiosMethod({
         method:"Put",

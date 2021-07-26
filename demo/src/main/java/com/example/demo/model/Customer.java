@@ -14,6 +14,6 @@ public class Customer {
     String phone;
     String backUrl;
     String avatarUrl;
-    Byte type;
-    Byte state;
+    Byte type=0;
+    Byte state=0;
 }

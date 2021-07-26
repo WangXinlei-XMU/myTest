@@ -87,7 +87,7 @@ public class ArticleController {
     @DeleteMapping("/delete/{id}")
     public MyResult deleteArticle(@PathVariable("id") Integer id){
         MyResult myResult=new MyResult();
-        System.out.println(id);
+//        System.out.println(id);
         articleService.deleteArticle(id);
         myResult.setCode(0);
         return myResult;
@@ -115,8 +115,18 @@ public class ArticleController {
     @PutMapping("/update")
     public MyResult update(@RequestBody Article article){
         MyResult myResult=new MyResult();
-        System.out.println(article);
+//        System.out.println(article);
         articleService.update(article);
+        myResult.setCode(0);
+        return myResult;
+    }
+
+    //管理员相关
+    @ResponseBody
+    @GetMapping("/admin/article")
+    public MyResult adminGetArticle(){
+        MyResult myResult=new MyResult();
+        myResult.setCode(0);
         return myResult;
     }
 }

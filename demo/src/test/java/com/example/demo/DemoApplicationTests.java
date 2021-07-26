@@ -7,6 +7,7 @@ import com.example.demo.model.Vo.Search;
 import com.example.demo.service.ArticleService;
 import com.example.demo.service.CommentService;
 import com.example.demo.service.CustomerService;
+import com.example.demo.service.OtherService;
 import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ class DemoApplicationTests {
 	ArticleService articleService;
 	@Autowired
 	CommentService commentService;
+	@Autowired
+	OtherService otherService;
 
 	@Test
 	public void test1(){
@@ -93,4 +96,10 @@ class DemoApplicationTests {
 	public void test11(){
 		System.out.println(articleService.getLabels());
 	}
+	@Test
+	public void test12(){
+		Search search=new Search();
+		System.out.println(otherService.getLikeByUser(search,1));
+	}
+
 }

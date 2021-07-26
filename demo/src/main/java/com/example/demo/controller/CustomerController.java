@@ -46,6 +46,7 @@ public class CustomerController {
     @PostMapping("/register")
     public MyResult register(@RequestBody Customer customer){
         Customer customer1=customerService.register(customer);
+//        System.out.println(customer1);
         MyResult myResult= new MyResult();
         if(customer1!=null){
             myResult.setCode(0);

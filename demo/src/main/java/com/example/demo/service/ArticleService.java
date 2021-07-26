@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -113,6 +114,7 @@ public class ArticleService {
         else if(article.getStateStr().equals("已发布"))
             article.setState((byte)1);
         article.setModifyTime(LocalDateTime.now());
+        this.updateLabel(article.getId(),article.getLabels());
         articleDao.updateArticle(article);
     }
 
@@ -125,21 +127,27 @@ public class ArticleService {
     //修改文章标签
     public void updateLabel(Integer articleId,List<String> newLabels){
         List<String> oldLabels=articleDao.getLabel(articleId);
-        List<String> temp=oldLabels;
+        List<String> temp=new ArrayList<>();
+        for(String olaLabel:oldLabels)
+            temp.add(olaLabel);
         //挑选出删去的标签
         for(String newLabel:newLabels)
            oldLabels.remove(newLabel);
         //挑选出新增的标签
         for(String oldLabel:temp)
             newLabels.remove(oldLabel);
+//        System.out.println("oldLabel:"+oldLabels);
+//        System.out.println("newLabel:"+newLabels);
         //新增标签
         for(String newLabel:newLabels){
             Integer labelId = articleDao.getLabelByText(newLabel);
+//            System.out.println("新增标签："+newLabel);
             articleDao.insertArticlLabel(articleId,labelId);
         }
         //删去标签
         for(String oldLabel:oldLabels){
             Integer labelId = articleDao.getLabelByText(oldLabel);
+//            System.out.println("删去标签："+oldLabel);
             articleDao.deleteArticleLabel(articleId,labelId);
         }
 

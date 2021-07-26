@@ -64,6 +64,11 @@ module.exports = {
         target:"http://localhost:8081/",
         secure:false,
         changeOrgin:true
+      },
+      '/other/*':{
+        target:"http://localhost:8081/",
+        secure:false,
+        changeOrgin:true
       }
     }
   },

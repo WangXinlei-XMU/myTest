@@ -63,7 +63,8 @@
             </li>
             <el-col :span="8" v-for="(article,index) in lists" v-bind:key="index">
               <el-card :body-style="{ padding: '10px' }">
-                <img v-if="article.backUrl!==null" :src="article.backUrl" class="image"/>
+                <img v-if="article.backUrl" :src="article.backUrl" class="image"/>
+                <img v-else src="https://pic2.zhimg.com/v2-0cc642bd1a977891d2c3407ff2f55619_r.jpg" class="image"/>
                 <div style="padding: 14px;">
                   <span class="article-user" @click="gotoArticle(index)">文章标题：{{ article.title }}</span>
                   <div>
@@ -74,6 +75,7 @@
                   </div>
                   <div>
                     <span>标签：</span>
+                    <span v-if="article.labels.length===0"><el-tag>无标签</el-tag></span>
                     <span class="article-label" v-for="(label,i) in article.labels" v-bind:key="i">
                       <el-tag>{{ label }}</el-tag>
                     </span>

@@ -113,7 +113,7 @@ public interface ArticleDao {
     //文章标签删除
     @Delete("delete from article_label " +
             "where article_id=#{articleId} " +
-            "and label_id={labelId}")
+            "and label_id=#{labelId}")
     public void deleteArticleLabel(@Param("articleId")Integer articleId,
                                    @Param("labelId")Integer labelId);
     //新增文章标签

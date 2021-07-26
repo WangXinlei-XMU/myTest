@@ -2,7 +2,7 @@
   <div class="info">
     <div class="block">
       <div class="name" >
-        <el-avatar :size="100" v-if="user.avatarUrl!==null" :src="user.avatarUrl"></el-avatar>
+        <el-avatar :size="100" v-if="user.avatarUrl" :src="user.avatarUrl"></el-avatar>
         <el-avatar :size="100" v-else src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
       </div>
       <p class="name">{{user.name}}</p>
@@ -21,32 +21,32 @@
             layout="total, sizes, prev, pager, next, jumper"
             :total="msg.total">
           </el-pagination>
-          <!--          显示-->
-          <div>
-            <li v-if="lists.length===0">
-              <el-empty description="没有搜到有效信息"></el-empty>
-            </li>
-            <el-col :span="8" v-for="(article,index) in lists" v-bind:key="index">
-              <el-card :body-style="{ padding: '10px' }">
-                <img :src="article.backUrl" class="image" onerror="this.src='https://pic2.zhimg.com/v2-0cc642bd1a977891d2c3407ff2f55619_r.jpg'"/>
-                <div style="padding: 14px;">
-                  <span class="article-user" @click="gotoArticle(index)">文章标题：{{ article.title }}</span>
-                  <div>
-                    <span class="article-user" @click="gotoUser(index)">作者：{{ article.user }}</span>
-                  </div>
-                  <div class="bottom clearfix">
-                    <time class="time">创造时间：{{ article.createTime }}</time>
-                  </div>
-                  <div>
-                    <span>标签：</span>
-                    <span class="article-label" v-for="(label,i) in article.labels" v-bind:key="i">
+        </div>
+
+        <!--          显示-->
+        <div>
+          <li v-if="lists.length===0">
+            <el-empty description="没有搜到有效信息"></el-empty>
+          </li>
+          <el-col :span="8" v-for="(article,index) in lists" v-bind:key="index">
+            <el-card :body-style="{ padding: '10px' }">
+              <img v-if="article.backUrl" :src="article.backUrl" class="image"/>
+              <img v-else src="https://pic2.zhimg.com/v2-0cc642bd1a977891d2c3407ff2f55619_r.jpg" class="image"/>
+              <div style="padding: 14px;">
+                <span class="article-user" @click="gotoArticle(index)">文章标题：{{ article.title }}</span>
+                <div class="bottom clearfix">
+                  <time class="time">创造时间：{{ article.createTime }}</time>
+                </div>
+                <div>
+                  <span>标签：</span>
+                  <span v-if="!article.labels||article.labels.length==0"><el-tag>无标签</el-tag></span>
+                  <span class="article-label" v-for="(label,i) in article.labels" v-bind:key="i">
                       <el-tag>{{ label }}</el-tag>
                     </span>
-                  </div>
                 </div>
-              </el-card>
-            </el-col>
-          </div>
+              </div>
+            </el-card>
+          </el-col>
         </div>
       </el-tab-pane>
       <el-tab-pane label="个人信息" name="second">
@@ -97,7 +97,7 @@ export default {
     getArticle(){
       let success=(response)=>{
         this.lists=response.data.list;
-        this.msg.total=this.lists.length;
+        this.msg.total=response.data.code;
       }
       utils.axiosMethod({
         method:"Post",
@@ -117,8 +117,12 @@ export default {
       console.log(`当前页: ${val}`);
       this.msg.current=val;
       this.getArticle();
-    }
-
+    },
+    //前往文章页面
+    gotoArticle(index){
+      this.articleId=this.lists[index].id;
+      this.$router.push('/info?artId='+this.articleId);
+    },
   }
 }
 </script>

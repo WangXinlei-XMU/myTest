@@ -8,6 +8,8 @@ import Info from "../views/Info";
 import UserInfo from "../views/UserInfo";
 import Me from "../views/Me";
 import Article from "../views/Article"
+import Admin from "../views/Admin"
+
 
 Vue.use(Router)
 
@@ -48,6 +50,11 @@ export default new Router({
       name:'article',
       path:'/article',
       component:Article
+    },
+    {
+      name:'admin',
+      path:'/admin',
+      component:Admin
     }
 
   ]

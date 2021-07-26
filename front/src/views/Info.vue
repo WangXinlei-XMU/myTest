@@ -1,8 +1,11 @@
 <template>
   <div class="info">
     <div class="block">
-      <el-image :src="article.backUrl"></el-image>
+      <el-image v-if="article.backUrl" :src="article.backUrl"></el-image>
+      <el-image v-else src="https://pic2.zhimg.com/v2-0cc642bd1a977891d2c3407ff2f55619_r.jpg"></el-image>
       <p class="title" >{{article.title}}</p>
+      <i v-if="like===0" class="el-icon-star-on" @click="likeArticle">取消喜欢</i>
+      <i v-else class="el-icon-star-off" @click="likeArticle">喜欢</i>
       <p class="user" @click="gotoUser(-1)" >作者：{{article.user}}</p>
       <p class="time" >创造时间：{{article.createTime}}</p>
       <span class="label" >标签：</span>
@@ -11,8 +14,11 @@
       </span>
     </div>
     <el-tabs>
-      <el-tab-pane label="文章" name="first">
-        <p class="context" >{{article.context}}</p>
+      <el-tab-pane label="文章">
+        <p class="context" >文章概要：</p>
+        <p class="context" >  {{article.summary}}</p>
+        <p class="context" >文章内容：</p>
+        <p class="context" >  {{article.context}}</p>
       </el-tab-pane>
       <el-tab-pane label="评论" name="second">
 
@@ -74,12 +80,13 @@ export default {
         desc:""
       },
       article:{},
-      lists:[]
+      lists:[],
+      like:-1
     }
   },
   created() {
     this.id=Number(this.$route.query.artId);
-    this.form.userId=localStorage.getItem("token");;
+    this.form.userId=localStorage.getItem("token");
     this.form.articleId=this.id;
     this.getArticle();
     this.getComment();
@@ -94,6 +101,18 @@ export default {
         method:"Get",
         url:"/article/"+this.id+"/",
         callback:success
+      })
+      utils.axiosMethod({
+        method:"Post",
+        url:"/other/browse/article/"+this.id+"/user/"+this.form.userId,
+      })
+      let like=(response)=>{
+        this.like=response.data.code;
+      }
+      utils.axiosMethod({
+        method:"Get",
+        url:"/other/like/article/"+this.id+"/user/"+this.form.userId,
+        callback:like
       })
     },
     //获取评论
@@ -146,6 +165,18 @@ export default {
           callback:success
         })
       }
+    },
+    //喜欢或取消喜欢
+    likeArticle(){
+      let success=(response)=>{
+        window.location.reload()
+      }
+      utils.axiosMethod({
+          method:"Post",
+          url:"/other/like/article/"+this.id+"/user/"+this.form.userId,
+          data:this.form,
+          callback:success
+      })
     }
   }
 }

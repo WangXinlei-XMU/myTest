@@ -48,7 +48,10 @@ export default {
             type: 'success',
             message: response.data.msg});
           localStorage.setItem("token", response.data.obj.id);
-          window.location.reload()
+          localStorage.setItem("type", response.data.obj.type);
+          if(response.data.obj.type===1)
+            this.$router.push('/admin?admin='+response.data.obj.id);
+          window.location.reload();
           // alert(response.data.obj.id);
         }
         else {
