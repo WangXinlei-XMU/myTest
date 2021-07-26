@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.ArticleSimple;
 import com.example.demo.model.Comment;
 import com.example.demo.model.CustomerSimple;
+import com.example.demo.model.Vo.ArticleLimitVo;
 import com.example.demo.model.Vo.MyResult;
 import com.example.demo.model.Customer;
 import com.example.demo.model.Vo.Search;
@@ -114,6 +116,35 @@ public class CustomerController {
         myResult.setCode(0);
         myResult.setMsg("修改成功");
         myResult.setObj(customer1);
+        return myResult;
+    }
+
+    //管理员相关
+    @ResponseBody
+    @PostMapping("/admin/customer")
+    public MyResult adminGetCustomer(@RequestBody Search search) {
+        PageInfo<Customer> customerList= customerService.adminGetCustomer(search);
+        MyResult myResult=new MyResult();
+        myResult.setCode((int) customerList.getTotal());
+        myResult.setList(customerList.getList());
+        return myResult;
+    }
+
+    @ResponseBody
+    @PutMapping("/admin/banCustomer/{userId}")
+    public MyResult banCustomer(@PathVariable("userId")Integer userId) {
+        customerService.banCustomer(userId);
+        MyResult myResult=new MyResult();
+        myResult.setCode(0);
+        return myResult;
+    }
+
+    @ResponseBody
+    @PutMapping("/admin/unBanCustomer/{userId}")
+    public MyResult unBanCustomer(@PathVariable("userId")Integer userId) {
+        customerService.unBanCustomer(userId);
+        MyResult myResult=new MyResult();
+        myResult.setCode(0);
         return myResult;
     }
 }

@@ -30,7 +30,7 @@ public interface ArticleDao {
     //按状态获取全部文章
     @Select("select a.id,a.user_id,c.name,a.title,a.create_time,a.state,a.back_url " +
             "from article a,customer c " +
-            "where a.user_id=c.id state=#{state}")
+            "where a.user_id=c.id and state=#{state}")
     @Results(
             value = {
                     @Result(column = "id",property = "id",javaType = Integer.class,jdbcType = JdbcType.INTEGER),
@@ -43,7 +43,25 @@ public interface ArticleDao {
                     @Result(column = "state",property = "state",javaType = Byte.class,jdbcType = JdbcType.TINYINT)
             }
     )
-    public List<ArticleSimple> getArticle(@Param("state")Byte state);
+    public List<ArticleSimple> getArticleByState(@Param("state")Byte state);
+
+    //获取全部文章
+    @Select("select a.id,a.user_id,c.name,a.title,a.create_time,a.state,a.back_url " +
+            "from article a,customer c " +
+            "where a.user_id=c.id")
+    @Results(
+            value = {
+                    @Result(column = "id",property = "id",javaType = Integer.class,jdbcType = JdbcType.INTEGER),
+                    @Result(column = "user_id",property = "userId",javaType = Integer.class,jdbcType = JdbcType.INTEGER),
+                    @Result(column = "name",property = "user",javaType = String.class,jdbcType = JdbcType.VARCHAR),
+                    @Result(column = "title",property = "title",javaType = String.class,jdbcType = JdbcType.VARCHAR),
+                    @Result(column = "modify_time",property = "modifyTime",javaType = LocalDateTime.class,jdbcType = JdbcType.DATETIMEOFFSET),
+                    @Result(column = "back_url",property = "backUrl",javaType = String.class,jdbcType = JdbcType.VARCHAR),
+                    @Result(column = "create_time",property = "createTime",javaType = LocalDateTime.class,jdbcType = JdbcType.DATETIMEOFFSET),
+                    @Result(column = "state",property = "state",javaType = Byte.class,jdbcType = JdbcType.TINYINT)
+            }
+    )
+    public List<ArticleSimple> getArticle();
 
 
     //按关键词语搜索
@@ -99,7 +117,8 @@ public interface ArticleDao {
     public List<Label> getLabels();
 
     @Update("update article " +
-            "set title=#{article.title},context=#{article.context},summary=#{article.summary}," +
+            "set title=#{article.title},context=#{article.context}," +
+            "summary=#{article.summary},state=#{article.state}," +
             "back_url=#{article.backUrl},modify_time=#{article.modifyTime} " +
             "where id=#{article.id}")
     public void updateArticle(@Param("article")Article article);
@@ -126,4 +145,5 @@ public interface ArticleDao {
     @Select("select id from label " +
             "where text=#{label}")
     public Integer getLabelByText(@Param("label")String label);
+
 }

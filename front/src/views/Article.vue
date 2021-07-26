@@ -4,11 +4,16 @@
       <el-form-item label="文章标题">
         <el-input v-model="article.title"></el-input>
       </el-form-item>
-      <el-form-item label="文章状态">
+      <el-form-item v-if="article.state===1||article.state===0||isNaN(id)" label="文章状态">
         <el-select v-model="article.stateStr" :placeholder="article.stateStr">
           <el-option label="已发布" value="已发布"></el-option>
           <el-option label="未发布" value="未发布"></el-option>
         </el-select>
+      </el-form-item>
+      <el-form-item v-else label="文章状态">
+        <el-input v-model="article.stateStr" :disabled="true">
+        </el-input>
+        <el-input>申请解封</el-input>
       </el-form-item>
       <el-form-item label="标签设置">
         <el-checkbox-group v-model="article.labels">
@@ -112,7 +117,7 @@ export default {
         return;
       }
       let success=(response)=>{
-        // this.labels=response.data.list;
+        this.$message.success('新建成功');
       }
       utils.axiosMethod({
         method:"Post",

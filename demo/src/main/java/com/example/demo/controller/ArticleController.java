@@ -123,9 +123,45 @@ public class ArticleController {
 
     //管理员相关
     @ResponseBody
-    @GetMapping("/admin/article")
-    public MyResult adminGetArticle(){
+    @PostMapping("/admin/article")
+    public MyResult adminGetArticle(@RequestBody(required = false) Search search){
         MyResult myResult=new MyResult();
+        PageInfo<ArticleSimple> articleSimpleList=articleService.getArticle(search);
+//        System.out.println(articleSimpleList);
+        myResult.setCode((int) articleSimpleList.getTotal());
+        myResult.setList(articleSimpleList.getList());
+        return myResult;
+    }
+
+
+    @ResponseBody
+    @PostMapping("/admin/article/limit/")
+    public MyResult adminGetArticleKey(@RequestBody(required = false)ArticleLimitVo vo){
+        PageInfo<ArticleSimple> articleSimpleList= articleService.getArticleByLimit(vo);
+//        System.out.println(search1);
+//        System.out.println(vo);
+        MyResult myResult= new MyResult();
+        myResult.setCode((int) articleSimpleList.getTotal());
+        System.out.println(articleSimpleList);
+        myResult.setList(articleSimpleList.getList());
+//        System.out.println(articleSimpleList);
+        return myResult;
+    }
+
+    @ResponseBody
+    @PutMapping("/admin/banArticle/{artId}")
+    public MyResult adminBanArticle(@PathVariable("artId")Integer id) {
+        MyResult myResult=new MyResult();
+        articleService.banArticleState(id);
+        myResult.setCode(0);
+        return myResult;
+    }
+
+    @ResponseBody
+    @PutMapping("/admin/unBanArticle/{artId}")
+    public MyResult adminUnBanArticle(@PathVariable("artId")Integer id) {
+        MyResult myResult=new MyResult();
+        articleService.banArticleState(id);
         myResult.setCode(0);
         return myResult;
     }

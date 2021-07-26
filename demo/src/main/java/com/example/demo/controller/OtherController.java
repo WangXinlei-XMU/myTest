@@ -88,5 +88,16 @@ public class OtherController {
         return myResult;
     }
 
-
+    //管理员获取全部浏览记录
+    //查询浏览
+    @ResponseBody
+    @PostMapping("/admin/browse")
+    public MyResult getBrowse(@RequestBody Search search){
+        MyResult myResult=new MyResult();
+        PageInfo<Browse> browsePageInfo=otherService.getBrowse(search);
+        myResult.setList(browsePageInfo.getList());
+        myResult.setCode((int)browsePageInfo.getTotal());
+//        System.out.println(myResult.getList());
+        return myResult;
+    }
 }

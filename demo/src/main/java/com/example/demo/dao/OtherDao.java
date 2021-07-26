@@ -12,8 +12,8 @@ import java.util.List;
 public interface OtherDao {
 
     //增加一条浏览记录
-    @Insert("insert into browse (article_id,user_id,time) values " +
-            "(#{artId},#{userId},#{time})")
+    @Insert("insert into browse (article_id,user_id,time,be_deleted) values " +
+            "(#{artId},#{userId},#{time},0)")
     public void addBrowse(@Param("artId")Integer artId,
                           @Param("userId")Integer userId,
                           @Param("time")LocalDateTime time);
@@ -72,4 +72,22 @@ public interface OtherDao {
             "article_id=#{artId} and user_id=#{userId}")
     public void deleteLikeArticleUser(@Param("artId")Integer artId,
                                       @Param("userId")Integer userId);
+
+
+    //管理员相关部分
+    //获取全部浏览
+    @Select("select b.article_id,a.title,b.user_id,c.name,time " +
+            "from browse b,article a,customer c " +
+            "where a.id=b.article_id and " +
+            "c.id=b.user_id")
+    @Results(
+            value = {
+                    @Result(column = "article_id",property = "articleId",javaType = Integer.class,jdbcType = JdbcType.INTEGER),
+                    @Result(column = "title",property = "articleTitle",javaType = String.class,jdbcType = JdbcType.VARCHAR),
+                    @Result(column = "user_id",property = "userId",javaType = Integer.class,jdbcType = JdbcType.INTEGER),
+                    @Result(column = "name",property = "userName",javaType = String.class,jdbcType = JdbcType.VARCHAR),
+                    @Result(column = "time",property = "time",javaType = LocalDateTime.class,jdbcType = JdbcType.TIMESTAMP),
+            }
+    )
+    List<Browse> getBrowse();
 }

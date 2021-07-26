@@ -33,18 +33,25 @@ public class ArticleService {
         List<ArticleSimple> list= articleDao.getArticleByUser(userId);
         for(ArticleSimple articleSimple:list){
             articleSimple.setLabels(articleDao.getLabel(articleSimple.getId()));
-            if(articleSimple.getState()!=null){
-                switch (articleSimple.getState()){
-                    case 0:articleSimple.setStateStr("未发布"); break;
-                    case 1:articleSimple.setStateStr("已发布"); break;
-                    case 2:articleSimple.setStateStr("被封禁"); break;
-                    case 3:articleSimple.setStateStr("已删除"); break;
-                }
-            }
+            articleSimple.setStateStr(getState(articleSimple.getState()));
         }
         PageInfo<ArticleSimple> pageInfo = new PageInfo<>(list);
         return pageInfo;
     }
+    //获得状态标识
+    private String getState(Byte state){
+        String str="";
+        if(state!=null){
+            switch (state){
+                case 0:str="未发布"; break;
+                case 1:str="已发布"; break;
+                case 2:str="被封禁"; break;
+                case 3:str="已删除"; break;
+            }
+        }
+        return str;
+    }
+
     //获取文章标签
     public List<String> getLabel(Integer articleId){
         return articleDao.getLabel(articleId);
@@ -71,32 +78,43 @@ public class ArticleService {
     public Article getArticleById(Integer id){
         Article article=articleDao.getArticleById(id);
         List<String> list=articleDao.getLabel(id);
-        switch (article.getState()){
-            case 0:article.setStateStr("未发布");break;
-            case 1:article.setStateStr("已发布");break;
-            case 2:article.setStateStr("已封禁");break;
-            case 3:article.setStateStr("已删除");break;
-        }
+        article.setStateStr(getState(article.getState()));
         article.setLabels(list);
         return article;
     }
 
     //通过搜索限制
     public PageInfo<ArticleSimple> getArticleByLimit(ArticleLimitVo vo) {
+        //改变状态
         // 1 设置分页页码和显示条数
 //        System.out.println(pageSize);
         PageHelper.startPage(vo.getCurrent(),vo.getSize(),true);
 
+        //改变状态
+        this.getState(vo.getStateStr());
+        System.out.println(vo);
         List<ArticleSimple> list=articleDao.getArticleByLimit(vo);
 
         for(ArticleSimple articleSimple:list){
             articleSimple.setLabels(articleDao.getLabel(articleSimple.getId()));
+            articleSimple.setStateStr(this.getState(articleSimple.getState()));
         }
         // 2 集合封装到PageInfo类中
         PageInfo<ArticleSimple> pageInfo = new PageInfo<>(list);
         return pageInfo;
     }
 
+    //获得状态
+    private Byte getState(String stateStr){
+        Byte state=-1;
+        switch (stateStr){
+            case "未发布":state=(byte)0;break;
+            case "已发布":state=(byte)1;break;
+            case "被封禁":state=(byte)2;break;
+            case "已删除":state=(byte)3;break;
+        }
+        return state;
+    }
     //删除某文章（逻辑）
     public void deleteArticle(Integer id){
         articleDao.changeArticleState(3,id);
@@ -113,6 +131,7 @@ public class ArticleService {
             article.setState((byte)0);
         else if(article.getStateStr().equals("已发布"))
             article.setState((byte)1);
+//        System.out.println(article);
         article.setModifyTime(LocalDateTime.now());
         this.updateLabel(article.getId(),article.getLabels());
         articleDao.updateArticle(article);
@@ -121,6 +140,7 @@ public class ArticleService {
     //新建文章
     public void insertArticle(Article article){
         article.newArticle();
+        article.setState(this.getState(article.getStateStr()));
         articleDao.insertArticle(article);
     }
 
@@ -151,5 +171,34 @@ public class ArticleService {
             articleDao.deleteArticleLabel(articleId,labelId);
         }
 
+    }
+
+
+    //管理员相关
+
+    //查询全部文章
+    public PageInfo<ArticleSimple> getArticle(Search search){
+        // 1 设置分页页码和显示条数
+//        System.out.println(pageSize);
+        PageHelper.startPage(search.getCurrent(),search.getSize(),true);
+
+        List<ArticleSimple> list=articleDao.getArticle();
+
+        for(ArticleSimple articleSimple:list){
+            articleSimple.setLabels(articleDao.getLabel(articleSimple.getId()));
+            articleSimple.setStateStr(getState(articleSimple.getState()));
+        }
+        // 2 集合封装到PageInfo类中
+        PageInfo<ArticleSimple> pageInfo = new PageInfo<>(list);
+        return pageInfo;
+    }
+
+    public void banArticleState(Integer id){
+        articleDao.changeArticleState(2,id);
+    }
+
+
+    public void unBanArticleState(Integer id){
+        articleDao.changeArticleState(0,id);
     }
 }

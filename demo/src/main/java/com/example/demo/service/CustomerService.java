@@ -51,19 +51,18 @@ public class CustomerService {
         return customer1;
     }
     //注销用户
-    public Customer deleteCustomer(Integer id){
-        Customer customer= customerDao.getCustomerById(id);
-        customer.setState((byte)2);
-        customerDao.updateCustomer(customer);
-        return customer;
+    public void deleteCustomer(Integer id){
+        customerDao.changeCustomerState(1,id);
     }
     //封禁用户
-    public Customer banCustomer(Integer id){
-        Customer customer= customerDao.getCustomerById(id);
-        customer.setState((byte)1);
-        customerDao.updateCustomer(customer);
-        return customer;
+    public void banCustomer(Integer id){
+        customerDao.changeCustomerState(2,id);
     }
+    //解封用户
+    public void unBanCustomer(Integer id) {
+        customerDao.changeCustomerState(0,id);
+    }
+
     //登录
     public Customer login(String name,String pass){
         Customer customer=new Customer();
@@ -89,4 +88,19 @@ public class CustomerService {
         return customerDao.selectCustomer(customer);
     }
 
+
+    //管理员相关
+
+    public PageInfo<Customer> adminGetCustomer(Search search) {
+        // 1 设置分页页码和显示条数
+        PageHelper.startPage(search.getCurrent(), search.getSize(),true);
+        // 依然调用查询所有的方法
+        List<Customer> list;
+        System.out.println(search.getSearch());
+//        if(search.getSearch()==null||search.getSearch().equals(""))
+            list= customerDao.adminGetAll();
+        // 2 集合封装到PageInfo类中
+        PageInfo<Customer> pages = new PageInfo<>(list);
+        return pages;
+    }
 }

@@ -70,8 +70,13 @@
         </div>
         <!--        显示-->
         <el-table :data="browse" style="width: 100%">
-          <el-table-column prop="articleTitle" label="标题" width="180"></el-table-column>
+          <el-table-column prop="articleTitle" label="标题" width="100"></el-table-column>
           <el-table-column prop="time" label="时间" width="180"></el-table-column>
+          <el-table-column label="操作" width="180">
+            <template slot-scope="scope">
+              <el-button @click="gotoArticleBrowse(scope.row)" type="text" size="small">进入文章</el-button>
+            </template>
+          </el-table-column>
         </el-table>
         <!--          页码-->
         <div class="block">
@@ -164,7 +169,7 @@ export default {
         current:1,
         total:0,
       },
-      likes:[]
+      likes:[],
     }
   },
   created() {
@@ -315,7 +320,7 @@ export default {
       this.$router.push('/article?artId='+row.id);
     },
     //进入新建文章页面
-    newArticle(row){
+    newArticle(){
       this.$router.push('/article');
     },
     //删除文章
@@ -324,7 +329,6 @@ export default {
         if(response.data.code!==null)
           window.location.reload();
       }
-      // console.log(row.id)
       utils.axiosMethod({
         method:"Delete",
         url:"/article/delete/"+row.id+"/",
@@ -335,6 +339,9 @@ export default {
     gotoArticle(index){
       this.articleId=this.likes[index].id;
       this.$router.push('/info?artId='+this.articleId);
+    },
+    gotoArticleBrowse(row){
+      this.$router.push('/info?artId='+row.id);
     },
     //前往作者页面
     gotoUser(index){
@@ -362,6 +369,11 @@ export default {
 }
 .el-tabs .el-tab-pane .el-table .success-row{
   background: #d9ffc4;
+}
+
+.time {
+  font-size: 13px;
+  color: #999;
 }
 .info p{
   text-align: left;

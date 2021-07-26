@@ -16,17 +16,23 @@
         from article a,customer c
         <where>
             a.user_id=c.id
+            <if test="key!=null and key!=''">
+                and (a.title like '%${key}%' or c.name like '%${key}%')
+            </if>
             <if test="user!=null and user!=''">
-                and name=#{user}
+                and c.name=#{user}
             </if>
             <if test="title!=null and title!=''">
-                and title=#{title}
+                and a.title=#{title}
             </if>
             <if test="date1!=null">
-                and create_time &gt; #{date1}
+                and a.create_time &gt; #{date1}
             </if>
             <if test="date2!=null">
-                and create_time &lt; #{date2}
+                and a.create_time &lt; #{date2}
+            </if>
+            <if test="state!=null and state!=-1">
+                and a.state = #{state}
             </if>
         </where>
     </select>

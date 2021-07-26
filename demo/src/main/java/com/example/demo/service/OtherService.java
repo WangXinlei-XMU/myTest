@@ -70,4 +70,14 @@ public class OtherService {
         //不喜欢则删除
         else otherDao.deleteLikeArticleUser(artId,userId);
     }
+
+    //管理员获取全部浏览
+    public PageInfo<Browse> getBrowse(Search search) {
+        PageHelper.startPage(search.getCurrent(),search.getSize(),true);
+
+        List<Browse> list=otherDao.getBrowse();
+
+        PageInfo<Browse> pageInfo = new PageInfo<>(list);
+        return pageInfo;
+    }
 }
