@@ -9,7 +9,7 @@ public class Article {
     Integer id;
     Integer userId;
     String title;
-    String text;
+    String content;
     String summary;
     LocalDateTime createTime;
     LocalDateTime modifyTime;

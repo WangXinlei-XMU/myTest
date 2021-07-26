@@ -22,7 +22,7 @@ public interface ArticleDao {
     )
     public List<ArticleSimple> getArticleByUser(@Param("userId")Integer userId);
 
-    @Select("select L.text from article_label A,label L " +
+    @Select("select L.content from article_label A,label L " +
             "where A.article_id=#{articleId} and A.label_id=L.id")
     //获得文章标签
     public List<String> getLabel(@Param("articleId") Integer articleId);

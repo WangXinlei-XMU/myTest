@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class ArticleRestrict {
     String user;
     String title;
-    String text;
+    String content;
     LocalDateTime beginTime;
     LocalDateTime endTime;
     Byte state;
