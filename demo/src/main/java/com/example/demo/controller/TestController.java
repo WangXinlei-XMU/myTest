@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.ArticleDao;
+import com.example.demo.dao.CommentDao;
+import com.example.demo.model.Article;
+import com.example.demo.model.Comment;
 import com.example.demo.model.Customer;
 import com.example.demo.service.CustomerService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -13,12 +17,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.json.Json;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class TestController {
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    ArticleDao articleDao;
+
+    @Autowired
+    CommentDao commentDao;
 
     @CrossOrigin
     @ResponseBody
@@ -28,6 +39,39 @@ public class TestController {
         ObjectMapper mapper = new ObjectMapper();
         String jsonStr = "";
         jsonStr =  mapper.writeValueAsString(customer);
+        return jsonStr;
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping("/test2")
+    public String test2() throws JsonProcessingException {
+        List<Article> list=articleDao.getLikeByUser(1);
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonStr = "";
+        jsonStr =  mapper.writeValueAsString(list);
+        return jsonStr;
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping("/test3")
+    public String test3() throws JsonProcessingException {
+        List<Article> list=articleDao.getArticleByUserId(1);
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonStr = "";
+        jsonStr =  mapper.writeValueAsString(list);
+        return jsonStr;
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping("/test4")
+    public String test4() throws JsonProcessingException {
+        List<Comment> list=commentDao.getCommentByArticle(1);
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonStr = "";
+        jsonStr =  mapper.writeValueAsString(list);
         return jsonStr;
     }
 }

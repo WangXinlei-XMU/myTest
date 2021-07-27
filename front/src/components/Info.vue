@@ -7,7 +7,6 @@
   </div>
 </template>
 <script>
-  import utils from '../../utils/utils'
   import axios from 'axios'
   export default {
     data()

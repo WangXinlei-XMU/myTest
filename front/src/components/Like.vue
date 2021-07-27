@@ -6,28 +6,43 @@
       <h2>收藏夹</h2>
       <hr>
     </div>
-    <div v-for="o in 4" :key="o" class="content">
+    <div  v-for="json in list" class="content">
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>{{title}}</span>
+          <span>{{json.title}}</span>
           <el-button style="float: right; padding: 3px 0" type="text">取消收藏</el-button>
         </div>
-        <p>{{summary}}</p>
-        <p>{{author}}{{time}}</p>
+        <p>{{json.summary}}</p>
+        <p>{{json.user_id}}{{json.create_time}}</p>
       </el-card>
     </div>
   </div>
 </template>
-<script scoped>
+<script>
+  import axios from 'axios'
   export default {
     data()
     {
       return{
-        title:"博客标题",
-        summary:"这是一篇博客文章的简介",
-        author:"作者（url跳转）",
-        time:"2021-7-25 9：31"
+        list:[]
       }
+    },
+    methods:{
+      getLike(){
+        axios.get('http://localhost:8081/test2',{})
+          .then(res=>{
+            console.log(res.data)
+            var jObject=res.data.valueOf()
+            this.list=res.data
+            console.log(this.list)
+          }).catch(err=>{
+          console.log(err);
+        })
+        console.log("你好");
+      }
+    },
+    created() {
+      this.getLike();
     }
   }
 </script>

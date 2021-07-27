@@ -14,4 +14,7 @@ public class ArticleSimple {
     String url;
     LocalDateTime createTime;
     Byte state;
+
+    public void setUser(String name) {
+    }
 }

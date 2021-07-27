@@ -16,4 +16,7 @@ public class Customer {
     String avatarUrl;
     Byte type;
     Byte state;
+
+    public String getName() {return this.name;
+    }
 }
