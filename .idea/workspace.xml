@@ -4,15 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="注册登录的更新">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" afterDir="false" />
+    <list default="true" id="3761ee8f-44b2-4973-953f-13c579adc583" name="Default Changelist" comment="浏览和喜爱相关&#10;管理员页面初步">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Main.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/OtherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/OtherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/ArticleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/ArticleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/CustomerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/OtherDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/dao/OtherDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/ArticleRestrict.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/ArticleLimitVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/model/Vo/ArticleLimitVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/OtherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/OtherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/views/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Admin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/views/Article.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Article.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/views/Me.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/Me.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,14 +71,18 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\test\front\src\views" />
+      <recent name="C:\Users\Administrator\Desktop\test\demo\src\main\resources\mapper" />
       <recent name="C:\Users\Administrator\Desktop\test\front\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\test\front\src\views" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.demo" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
-    <configuration name="DemoApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DemoApplicationTests.test10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
@@ -80,28 +92,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.demo" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DemoApplicationTests.test31" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplicationTests" />
-      <option name="METHOD_NAME" value="test31" />
+      <option name="METHOD_NAME" value="test10" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DemoApplicationTests.test7" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DemoApplicationTests.test11" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
@@ -111,7 +108,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.demo" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplicationTests" />
-      <option name="METHOD_NAME" value="test7" />
+      <option name="METHOD_NAME" value="test11" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplicationTests.test12" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="test12" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplicationTests.test9" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="test9" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -133,9 +162,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.DemoApplication" />
-        <item itemvalue="JUnit.DemoApplicationTests.test7" />
-        <item itemvalue="JUnit.DemoApplicationTests.test31" />
-        <item itemvalue="JUnit.DemoApplicationTests" />
+        <item itemvalue="JUnit.DemoApplicationTests.test12" />
+        <item itemvalue="JUnit.DemoApplicationTests.test11" />
+        <item itemvalue="JUnit.DemoApplicationTests.test10" />
+        <item itemvalue="JUnit.DemoApplicationTests.test9" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +206,84 @@
       <workItem from="1627016661940" duration="678000" />
       <workItem from="1627018979591" duration="874000" />
       <workItem from="1627020181403" duration="1794000" />
-      <workItem from="1627021988142" duration="1355000" />
+      <workItem from="1627021988142" duration="1793000" />
+      <workItem from="1627024172812" duration="1821000" />
+      <workItem from="1627026008359" duration="1792000" />
+      <workItem from="1627027816769" duration="1793000" />
+      <workItem from="1627029623911" duration="1778000" />
+      <workItem from="1627037771741" duration="1781000" />
+      <workItem from="1627039570651" duration="1793000" />
+      <workItem from="1627041385836" duration="1791000" />
+      <workItem from="1627043194492" duration="1446000" />
+      <workItem from="1627044656114" duration="1162000" />
+      <workItem from="1627045844054" duration="1791000" />
+      <workItem from="1627047657501" duration="1303000" />
+      <workItem from="1627052728248" duration="1795000" />
+      <workItem from="1627054550937" duration="1793000" />
+      <workItem from="1627056365028" duration="866000" />
+      <workItem from="1627059372830" duration="134000" />
+      <workItem from="1627101570233" duration="1735000" />
+      <workItem from="1627103332417" duration="1781000" />
+      <workItem from="1627105142078" duration="1759000" />
+      <workItem from="1627106949359" duration="1779000" />
+      <workItem from="1627108756307" duration="1792000" />
+      <workItem from="1627110571466" duration="1791000" />
+      <workItem from="1627112387155" duration="1806000" />
+      <workItem from="1627114225261" duration="1784000" />
+      <workItem from="1627116025421" duration="1789000" />
+      <workItem from="1627117831312" duration="1791000" />
+      <workItem from="1627121792985" duration="1791000" />
+      <workItem from="1627123604293" duration="1793000" />
+      <workItem from="1627125411046" duration="2057000" />
+      <workItem from="1627127499361" duration="1793000" />
+      <workItem from="1627129310586" duration="1791000" />
+      <workItem from="1627131142896" duration="1794000" />
+      <workItem from="1627133215269" duration="1400000" />
+      <workItem from="1627140739228" duration="1656000" />
+      <workItem from="1627142568834" duration="1777000" />
+      <workItem from="1627144390269" duration="1780000" />
+      <workItem from="1627146204975" duration="1608000" />
+      <workItem from="1627183302588" duration="1777000" />
+      <workItem from="1627185332432" duration="543000" />
+      <workItem from="1627188394825" duration="1791000" />
+      <workItem from="1627190210070" duration="1918000" />
+      <workItem from="1627192144854" duration="1850000" />
+      <workItem from="1627194132114" duration="1791000" />
+      <workItem from="1627195949806" duration="1789000" />
+      <workItem from="1627197762673" duration="1789000" />
+      <workItem from="1627199578224" duration="1791000" />
+      <workItem from="1627201401377" duration="1792000" />
+      <workItem from="1627203215335" duration="1792000" />
+      <workItem from="1627205022752" duration="1790000" />
+      <workItem from="1627210530298" duration="2023000" />
+      <workItem from="1627212571219" duration="1792000" />
+      <workItem from="1627214391460" duration="1769000" />
+      <workItem from="1627216202052" duration="2109000" />
+      <workItem from="1627225026921" duration="1795000" />
+      <workItem from="1627226844731" duration="1826000" />
+      <workItem from="1627228690973" duration="1796000" />
+      <workItem from="1627230511837" duration="1452000" />
+      <workItem from="1627231986664" duration="147000" />
+      <workItem from="1627260478793" duration="1794000" />
+      <workItem from="1627262319912" duration="1793000" />
+      <workItem from="1627264138327" duration="1792000" />
+      <workItem from="1627265948610" duration="1793000" />
+      <workItem from="1627267775737" duration="1793000" />
+      <workItem from="1627269585941" duration="1774000" />
+      <workItem from="1627276085795" duration="1792000" />
+      <workItem from="1627277892573" duration="1793000" />
+      <workItem from="1627279699708" duration="1802000" />
+      <workItem from="1627281587093" duration="1793000" />
+      <workItem from="1627283399636" duration="1793000" />
+      <workItem from="1627285218600" duration="1792000" />
+      <workItem from="1627287054811" duration="1793000" />
+      <workItem from="1627288867552" duration="1362000" />
+      <workItem from="1627296372815" duration="1792000" />
+      <workItem from="1627298199948" duration="1794000" />
+      <workItem from="1627300008270" duration="1792000" />
+      <workItem from="1627301820976" duration="1792000" />
+      <workItem from="1627303628466" duration="1792000" />
+      <workItem from="1627305435568" duration="1527000" />
     </task>
     <task id="LOCAL-00001" summary="commint">
       <created>1626940860347</created>
@@ -206,7 +313,56 @@
       <option name="project" value="LOCAL" />
       <updated>1627014642341</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="传文件信息到前端">
+      <created>1627023482705</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1627023482705</updated>
+    </task>
+    <task id="LOCAL-00006" summary="文章搜索">
+      <created>1627044920505</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1627044920505</updated>
+    </task>
+    <task id="LOCAL-00007" summary="文章详情页初版">
+      <created>1627059469953</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1627059469953</updated>
+    </task>
+    <task id="LOCAL-00008" summary="文章搜素限制">
+      <created>1627111754975</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1627111754975</updated>
+    </task>
+    <task id="LOCAL-00009" summary="登录评论限制">
+      <created>1627145826605</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1627145826605</updated>
+    </task>
+    <task id="LOCAL-00010" summary="文章相关操作">
+      <created>1627232067431</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1627232067431</updated>
+    </task>
+    <task id="LOCAL-00011" summary="浏览和喜爱相关&#10;管理员页面初步">
+      <created>1627284112526</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1627284112526</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +398,14 @@
     <MESSAGE value="1" />
     <MESSAGE value="vue导航，首页初步设计" />
     <MESSAGE value="注册登录的更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="注册登录的更新" />
+    <MESSAGE value="传文件信息到前端" />
+    <MESSAGE value="文章搜索" />
+    <MESSAGE value="文章详情页初版" />
+    <MESSAGE value="文章搜素限制" />
+    <MESSAGE value="登录评论限制" />
+    <MESSAGE value="文章相关操作" />
+    <MESSAGE value="浏览和喜爱相关" />
+    <MESSAGE value="浏览和喜爱相关&#10;管理员页面初步" />
+    <option name="LAST_COMMIT_MESSAGE" value="浏览和喜爱相关&#10;管理员页面初步" />
   </component>
 </project>

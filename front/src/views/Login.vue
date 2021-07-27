@@ -43,9 +43,20 @@ export default {
     },
     doLogin(){
       let success=(response)=>{
-        this.$message({
-          type: 'success',
-          message: response.data.msg});
+        if(response.data.code===0){
+          this.$message({
+            type: 'success',
+            message: response.data.msg});
+          localStorage.setItem("token", response.data.obj.id);
+          localStorage.setItem("type", response.data.obj.type);
+          if(response.data.obj.type===1)
+            this.$router.push('/admin?admin='+response.data.obj.id);
+          window.location.reload();
+          // alert(response.data.obj.id);
+        }
+        else {
+          this.$message.error(response.data.msg);
+        }
       }
           utils.axiosMethod({
           method:"POST",

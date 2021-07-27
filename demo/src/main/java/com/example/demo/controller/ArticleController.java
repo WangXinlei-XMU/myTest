@@ -22,7 +22,6 @@ public class ArticleController {
         List<ArticleSimple> articleSimpleList= articleService.getArticleByUser(1);
         System.out.println(articleSimpleList);
         MyResult myResult= new MyResult();
-        myResult.setList(articleSimpleList);
         return myResult;
     }
 }

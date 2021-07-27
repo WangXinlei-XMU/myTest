@@ -2,8 +2,10 @@
   <div id="login">
     <div class="navbar">
       <router-link to="/" class="rout">主页</router-link>
-      <router-link to="/register" class="rout-right">注册</router-link>
-      <router-link to="/login" class="rout-right">登录</router-link>
+      <label v-if="type!==null&&type==='1'" class="rout" @click="admin">管理</label>
+      <router-link v-if="token===null" to="/register" class="rout-right">注册</router-link>
+      <router-link v-if="token===null" to="/login" class="rout-right">登录</router-link>
+      <label v-if="token!==null" class="rout-right" @click="logout">退出</label>
     </div>
     <router-view/>
   </div>
@@ -18,28 +20,27 @@ export default {
       loginData:{
         username:"",
         password:""
-      }
+      },
+      token:'',
+      type:'',
     }
   },
+  created() {
+    this.token=localStorage.getItem("token");
+    this.type=localStorage.getItem("type");
+    // alert(this.type)
+  },
   methods:{
-    doLogin(value){
-      let success=(response)=>{
-          this.$message({
-            type: 'success',
-            message: '登录成功'});
-      }
-      if(value.username.equals(""))
-        alert("请输入名字！");
-      else if(value.password.equals(""))
-        alert("请输入密码！");
-      else
-        utils.axiosMethod({
-        method:"POST",
-        url:"/user/login/",
-        data:value,
-        callback:success
-      })
+    logout(){
+      //清除token
+      window.localStorage.clear();
+      //刷新页面
+      window.location.reload();
+      this.$router.push('/');
     },
+    admin(){
+      this.$router.push('/admin');
+    }
   }
 }
 </script>
